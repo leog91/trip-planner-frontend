@@ -17,6 +17,10 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
+//angular 1.6 route fix
+  .config(['$locationProvider', function($locationProvider) {
+  $locationProvider.hashPrefix('');
+}])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
