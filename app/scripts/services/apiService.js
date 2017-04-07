@@ -22,11 +22,11 @@ angular.module('tripplannerApp')
             saveItem: function (item) {
                 return $http({
                     method: 'post',
-                    url: this.url() + "item/create",
+                    url: this.url() + "items",
                     data: item
                 });
             },
-            
+
 
             getCountry: function () {
                 return country;
