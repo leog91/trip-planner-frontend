@@ -1,0 +1,89 @@
+<p>This is the addItem view.</p>
+
+
+{{test}}
+<br> {{item}}
+
+<br><br><br><br><br><br>
+
+
+<form novalidate class="form-horizontal">
+
+
+
+    <!--
+
+    <div class="row">
+        <div class="col-md-6">
+            {{"views.createEvent.name" | translate}}
+
+
+
+            <input ng-model="newEvent.name" type="text" class="form-control" placeholder="Name">
+            <br> {{"views.createEvent.address" | translate}}
+            <input ng-model="newEvent.address" type="text" class="form-control" placeholder="Address">
+            <br>
+        </div>
+
+        <div class="col-md-6">
+            {{"views.createEvent.category" | translate}}
+            <input ng-model="cat" type="text" class="form-control" placeholder="Category">
+            <br> {{"views.createEvent.price" | translate}}
+            <input ng-model="newEvent.price.ammount" type="text" class="form-control" placeholder="Price">
+            <br>
+        </div>
+    </div>
+
+    <br> {{"views.createEvent.imageLink" | translate}}
+    <input ng-model="newEvent.imageUrl" type="text" class="form-control" placeholder="Image Link">
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+            <br> {{"views.createEvent.maxCapacity" | translate}}
+            <input ng-model="newEvent.attenders.maxCapacity" type="text" class="form-control" placeholder="MaxCapacity">
+        </div>
+        <div class="col-md-4">
+            <br> {{"views.createEvent.recommendedMinGroup" | translate}}
+            <input ng-model="newEvent.attenders.recommendedMinGroup" type="text" class="form-control" placeholder="RecommendedMinGroup">
+        </div>
+        <div class="col-md-4">
+            <br> {{"views.createEvent.recommendedMaxGroup" | translate}}
+            <input ng-model="newEvent.attenders.recommendedMaxGroup" type="text" class="form-control" placeholder="RecommendedMaxGroup">
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            {{"views.createEvent.details" | translate}}
+            <input ng-model="newEvent.details" type="text" class="form-control" placeholder="Details">
+        </div>
+    </div>
+    <br>
+    <div class="text-center">
+        <div ng-cloak>
+            <div layout-gt-xs="row">
+                <div flex-gt-xs>
+                    <h4>{{"views.tripSelection.ChooseADay" | translate}}</h4>
+                    <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>
+                </div>
+            </div>
+        </div>
+        <input mdc-datetime-picker="" date="false" time="true" type="text" id="time2" placeholder="Time" min-date="minDate" format="HH:mm"
+            ng-model="time" class=" md-input">
+    </div>
+    <div class="form-group text-center ">
+
+
+
+</form>
+        <br>
+        <div class="row">
+            <button type="submit" ng-click="addItem" class="btn btn-lg btn-success "> Add Item</button>
+        </div>
+    </div>
+-->
+    <div class="">
+        <button type="submit" ng-click="saveItem()" class="btn btn-success ">Add item</button>
+    </div>
+    <br>

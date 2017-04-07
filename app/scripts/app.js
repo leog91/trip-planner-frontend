@@ -28,6 +28,11 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
+      .when('/addItem', {
+        templateUrl: 'views/addItem.html',
+        controller: 'AddItemCtrl',
+        controllerAs: 'addItem'
+      })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
