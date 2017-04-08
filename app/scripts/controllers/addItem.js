@@ -20,7 +20,8 @@ angular.module('tripplannerApp')
             name: "baseName",
             ammount: 0,
             price: "",
-            currency: ""
+            currency: "",
+            category:""
         }
 
         $scope.saveItem = function () {
