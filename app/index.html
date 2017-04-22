@@ -64,10 +64,10 @@
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
   <script>
     !function (A, n, g, u, l, a, r) {
-    A.GoogleAnalyticsObject = l, A[l] = A[l] || function () {
-      (A[l].q = A[l].q || []).push(arguments)    
-}, A[l].l = +new Date, a = n.createElement(g),
-      r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+      A.GoogleAnalyticsObject = l, A[l] = A[l] || function () {
+        (A[l].q = A[l].q || []).push(arguments)
+      }, A[l].l = +new Date, a = n.createElement(g),
+        r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
     }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', 'UA-XXXXX-X');
@@ -85,6 +85,7 @@
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
   <script src="bower_components/angular-touch/angular-touch.js"></script>
+  <script src="bower_components/angularjs-social-login/angularjs-social-login.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
 
@@ -94,8 +95,12 @@
   <script src="scripts/controllers/about.js"></script>
   <script src="scripts/controllers/addItem.js"></script>
   <script src="scripts/controllers/converter.js"></script>
+  <script src="scripts/controllers/login.js"></script>
 
   <script src="scripts/services/userService.js"></script>
+  <!--
+  <script src="scripts/services/authService.js"></script>
+  -->
   <script src="scripts/services/apiService.js"></script>
 
   <!-- endbuild -->
