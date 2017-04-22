@@ -16,7 +16,10 @@ angular.module('tripplannerApp')
         $rootScope.$on('event:social-sign-in-success', function (event, userDetails) {
 
             console.log(userDetails);
-            
+            $scope.result = userDetails;
+            //$scope.$apply();
+
+
             /*
             dataService.userSave(userDetails);
             var userName = dataService.getUser().email;
@@ -38,10 +41,14 @@ angular.module('tripplannerApp')
 
 
                 });*/
-        });
+        })
+        $scope.signout = function () {
+            socialLoginService.logout();
+        }
 
-
-
+        $scope.$on('event:social-sign-out-success', function (event, userDetails) {
+            $scope.result = userDetails;
+        })
 
 
 

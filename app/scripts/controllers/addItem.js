@@ -15,14 +15,38 @@ angular.module('tripplannerApp')
         $scope.test = "bind";
 
 
+        apiService.getItems().then(function (response) {
 
+            $scope.items = response.data;
+
+            console.log("getItems Ok");
+        },
+            function (error) {
+                console.log("getItemsFail");
+            });
+
+        //$$phase
+
+        /*if (!$scope.$$phase) {
+            //
+            $digest
+            //or 
+            //$apply
+        }*/
         $scope.item = {
             name: "baseName",
             ammount: 0,
             price: "",
             currency: "",
-            category:""
+            category: ""
         }
+
+
+
+        $scope.addCurrency = function () {
+            apiService.addRatio();
+
+        };
 
         $scope.saveItem = function () {
             $scope.item.currency = userService.getCountry();

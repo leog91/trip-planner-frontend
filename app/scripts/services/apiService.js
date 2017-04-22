@@ -27,10 +27,24 @@ angular.module('tripplannerApp')
                 });
             },
 
+            getItems: function (id) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "items"
+                });
+            },
 
             getCountry: function () {
                 return country;
             },
+
+            addRatio: function () {
+                return $http({
+                    method: 'post',
+                    url: this.url() + "currency/add/20/4/2017/USD/ARS/16"
+                });
+            },
+
 
 
 
