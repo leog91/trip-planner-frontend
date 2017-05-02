@@ -7,10 +7,64 @@
         <md-datepicker ng-model="myDate" md-placeholder="Enter date" md-open-on-focus></md-datepicker>
     </div>
 </div>
-    <br><br>
-    <br> {{myDate}}
-    <br> {{day}}
-    <br> {{month}}
-    <br> {{year}}
+<br><br>
+<br> {{myDate}}
+<br> {{day}}
+<br> {{month}}
+<br> {{year}}
 
 
+<br><br><br><br>
+
+<i class="material-icons">face</i>
+
+
+
+<br>
+
+________________________________
+<br>
+
+<abm-form-group>
+    <label abm-label type="floating">First name</label>
+    <input ng-model="firstname" abm-form-control>
+</abm-form-group>
+
+<form action="">
+  <abm-form-group>
+    <label>Checkbox group - Inside <code>.form-group</code></label>
+    <div class="checkbox" abm-checkbox label="Item1">
+      <input type="checkbox" ng-model="checkbox.item1">
+    </div>
+    <div class="checkbox" abm-checkbox label="Item2">
+      <input type="checkbox" ng-model="checkbox.item2">
+    </div>
+  </abm-form-group>
+  <label>Checkbox group - Outside <code>.form-group</code></label>
+  <div class="checkbox" abm-checkbox label="Item3">
+    <input type="checkbox" ng-model="checkbox.item3">
+  </div>
+  <div class="checkbox" abm-checkbox label="Item4">
+    <input type="checkbox" ng-model="checkbox.item4">
+  </div>
+</form>
+
+<h1>radio</h1>
+<form action="">
+  <abm-form-group>
+    <label>Radio group - inside <code>.form-group</code> </label>
+    <div class="radio" abm-radio label="Item1">
+      <input type="radio" name="radios" ng-model="radio.item1">
+    </div>
+    <div class="radio" abm-radio label="Item2">
+      <input type="radio" name="radios" ng-model="radio.item2">
+    </div>
+  </abm-form-group>
+  <label>Radio group - outside <code>.form-group</code> </label>
+  <div class="radio" abm-radio label="Item3">
+    <input type="radio" name="radios" ng-model="radio.item3">
+  </div>
+  <div class="radio" abm-radio label="Item4">
+    <input type="radio" name="radios" ng-model="radio.item4">
+  </div>
+</form>

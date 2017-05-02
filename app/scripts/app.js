@@ -17,6 +17,7 @@ angular
     'ngSanitize',
     //'ngTouch',
     'ngMaterial',
+    'angularBootstrapMaterial',
     'socialLogin'
     //, 'auth0.lock', 'ui.router', 'angular-jwt'
   ])
