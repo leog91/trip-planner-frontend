@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch',
+    //'ngTouch',
+    'ngMaterial',
     'socialLogin'
     //, 'auth0.lock', 'ui.router', 'angular-jwt'
   ])

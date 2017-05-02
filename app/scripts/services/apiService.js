@@ -11,6 +11,8 @@ angular.module('tripplannerApp')
 
         var bundle = {};
 
+        var currentGroupSize = 0;
+
         return {
 
 
@@ -19,13 +21,45 @@ angular.module('tripplannerApp')
                 return "http://localhost:8080/";
             },
 
-            saveItem: function (item) {
+            userEmail: function () {
+                //tt
+                return "leog91@gmail.com";
+            },
+
+            groupSize: function () {
+                //tt
+                return currentGroupSize;
+            },
+
+            setGroupSize: function (groupSize) {
+                currentGroupSize = groupSize;
+            },
+
+
+            /*            saveItem: function (item) {
+                            return $http({
+                                method: 'post',
+                                url: this.url() + "items",
+                                data: item
+                            });
+                        },
+            */
+            saveItem: function (item, date) {
                 return $http({
-                    method: 'post',
-                    url: this.url() + "items",
-                    data: item
+                    method: 'get',
+                    url: this.url() + "item/add/" + this.userEmail() + "/" + this.dateUrl(date) + this.itemUrl(item) + "/" + this.groupSize()
                 });
             },
+
+            //
+            itemUrl: function (item) {
+                return item.name + "/" + item.ammount + "/" + item.currency + "/" + item.category
+            },
+
+            dateUrl: function (date) {
+                return date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() + "/";
+            },
+
 
             getItems: function (id) {
                 return $http({

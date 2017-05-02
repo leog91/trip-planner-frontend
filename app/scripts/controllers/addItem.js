@@ -13,7 +13,7 @@ angular.module('tripplannerApp')
 
 
         $scope.test = "bind";
-
+        $scope.myDate = new Date();
 
         apiService.getItems().then(function (response) {
 
@@ -38,7 +38,7 @@ angular.module('tripplannerApp')
             ammount: 0,
             price: "",
             currency: "",
-            category: ""
+            category: "general"
         }
 
 
@@ -48,11 +48,28 @@ angular.module('tripplannerApp')
 
         };
 
+        /*
+                $scope.saveItem = function () {
+                    $scope.item.currency = userService.getCountry();
+                    console.log("fn test");
+        
+                    apiService.saveItem($scope.item)
+                        .then(function (response) {
+                            console.log("addItem OK");
+                        },
+                        function (error) {
+                            console.log("addItem Fail");
+                        });
+                    console.log($scope.item);
+        
+                };
+        */
+
         $scope.saveItem = function () {
             $scope.item.currency = userService.getCountry();
             console.log("fn test");
 
-            apiService.saveItem($scope.item)
+            apiService.saveItem($scope.item, $scope.myDate)
                 .then(function (response) {
                     console.log("addItem OK");
                 },
@@ -62,7 +79,6 @@ angular.module('tripplannerApp')
             console.log($scope.item);
 
         };
-
 
     });
 
