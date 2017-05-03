@@ -72,6 +72,15 @@ angular.module('tripplannerApp')
                 return country;
             },
 
+
+            saveSettings: function (countryCode, groupSize) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "user/saveSettings/" + countryCode + "/" + groupSize
+                });
+            },
+
+
             addRatio: function () {
                 return $http({
                     method: 'post',

@@ -1,0 +1,25 @@
+<div class="jumbotron">
+
+
+    <br><br>
+    <span>Country:</span>
+    <select ng-model="country">
+    <option value="">-- Select a Country --</option>
+    <option ng-repeat="country in countries" value="{{country.code}}">{{country.name}}</option>
+  </select>
+
+    <br>
+    <br>
+    <h2>Current Currency: {{country}}</h2>
+
+    <br><br>
+    <h2>Group Size: {{groupSize}}</h2>
+
+    <br><br>
+
+    <div class="">
+        <button type="submit" ng-click="saveSettings()" class="btn-lg btn-info btn-block">Save Settings</button>
+    </div>
+
+
+</div>

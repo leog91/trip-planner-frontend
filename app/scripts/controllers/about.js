@@ -8,12 +8,17 @@
  * Controller of the tripplannerApp
  */
 angular.module('tripplannerApp')
-  .controller('AboutCtrl', function ($scope) {
+  .controller('AboutCtrl', function ($scope, apiService) {
+
+
+
+
+
 
     var myDate = new Date();
     //this.isOpen = false;
 
-    
+
 
     $scope.day = myDate.getDate();
     $scope.month = myDate.getMonth();
