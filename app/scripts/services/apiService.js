@@ -61,10 +61,10 @@ angular.module('tripplannerApp')
             },
 
 
-            getItems: function (id) {
+            getItems: function (userEmail) {
                 return $http({
                     method: 'get',
-                    url: this.url() + "items"
+                    url: this.url() + "item/user/" + userEmail 
                 });
             },
 

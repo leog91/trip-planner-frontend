@@ -1,0 +1,25 @@
+<!--{{items}}-->
+
+
+
+
+
+
+<table class="table">
+
+    <tr>
+        <td>Name </td>
+        <td>Category</td>
+        <td>Currency</td>
+        <td>Amount</td>
+        <td>Date</td>
+    </tr>
+
+    <tr ng-repeat="i in items">
+        <td>{{ i.name }}</td>
+        <td>{{ i.category }}</td>
+        <td>{{ i.currency }}</td>
+        <td>{{ i.ammount }}</td>
+        <td>{{ i.date.dayOfMonth}} - {{i.date.monthOfYear}} -{{ i.date.year }}</td>
+    </tr>
+</table>
