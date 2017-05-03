@@ -57,14 +57,21 @@ angular.module('tripplannerApp')
             },
 
             dateUrl: function (date) {
-                return date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() + "/";
+                return date.getDate() + "/" + (date.getMonth()+ + 1 ) + "/" + date.getFullYear() + "/";
             },
 
 
             getItems: function (userEmail) {
                 return $http({
                     method: 'get',
-                    url: this.url() + "item/user/" + userEmail 
+                    url: this.url() + "item/user/" + userEmail
+                });
+            },
+
+            getBetweenDates: function (dateFrom, dateTo) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "item/betweendates/" + "email" + "/" + this.dateUrl(dateFrom) + this.dateUrl(dateTo)
                 });
             },
 

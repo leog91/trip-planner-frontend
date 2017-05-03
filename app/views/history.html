@@ -1,19 +1,77 @@
 <!--{{items}}-->
 
 
+<h1>Search by:</h1>
+
+
+<!-- selector
+<div class="">
+    <button type="submit" ng-click="byCategory()" class="btn-lg btn-info btn-block">Save Settings</button>
+</div>-->
 
 
 
 
-<table class="table">
 
-    <tr>
-        <td>Name </td>
-        <td>Category</td>
-        <td>Currency</td>
-        <td>Amount</td>
-        <td>Date</td>
-    </tr>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="">
+            <button type="submit" ng-click="showAll()" class="btn-lg btn-warning btn-block">Show all</button>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="text-center">
+            <button type="submit" ng-click="byCategory()" class="btn-lg btn-warning btn-block">By Category</button>
+        </div>
+        <div class="text-center">
+            <div class="">
+
+                <!--<h4>Category: </h4>-->
+                <br>
+            </div>
+            <select ng-model="category">
+    <option value="">-- Select a Category --</option>
+    <option ng-repeat="category in categories" >{{category.name}}</option>
+  </select>
+        </div>
+    </div>
+    <div class="col-md-3">
+
+        <div class="">
+            <button type="submit" ng-click="betweenDates()" class="btn-lg btn-info btn-block">Between Dates</button>
+        </div>
+    </div>
+    <div class="col-md-3">
+
+
+        <div class="text-center">
+            <div flex-gt-xs>
+                <md-datepicker ng-model="dateFrom" md-placeholder="From" md-open-on-focus></md-datepicker>
+                <md-datepicker ng-model="dateTo" md-placeholder="To" md-open-on-focus></md-datepicker>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+<table class="table table-striped">
+
+    <thead>
+        <th>Name </th>
+        <th>Category</th>
+        <th>Currency</th>
+        <th>Amount</th>
+        <th>Date</th>
+    </thead>
 
     <tr ng-repeat="i in items">
         <td>{{ i.name }}</td>
