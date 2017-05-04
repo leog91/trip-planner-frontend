@@ -9,38 +9,35 @@
  */
 angular.module('tripplannerApp')
     //.controller('LoginCtrl', function ($scope, authService) {
-    .controller('LoginCtrl', function ($scope, $rootScope) {
+    .controller('LoginCtrl', function ($scope, $rootScope, userService, apiService, $window, $location) {
 
 
 
         $rootScope.$on('event:social-sign-in-success', function (event, userDetails) {
 
             console.log(userDetails);
-            $scope.result = userDetails;
-            //$scope.$apply();
+
+            userService.setUser(userDetails);
+
+            apiService.logIn().then(function (response) {
+                console.log("user exist");
+
+                apiService.getProfile().then(function (response) {
+                    userService.setProfile(response.data);
+                })
 
 
-            /*
-            dataService.userSave(userDetails);
-            var userName = dataService.getUser().email;
-            userService.get(userName).then(function (response) {
-                console.log("get ok");
-                $window.location.href = '/#/home';
+                $window.location.href = '/#/main';
             },
                 function (error) {
-                    console.log("user not found")
-                    userService.saveDto(userName).then(function (response) {
-                        console.log("get createdDto ok");
-                        $window.location.href = '/#/editProfile';
-                    },
-                        function (error) {
-                            console.log("create userDto fail");
-                        });
+                    console.log("creating user");
+                    $window.location.href = '/#/settings';
+                });
 
-                    ;
+            console.log(userService.getEmail());
 
 
-                });*/
+
         })
         $scope.signout = function () {
             socialLoginService.logout();

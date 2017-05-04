@@ -8,7 +8,7 @@
  * Controller of the tripplannerApp
  */
 angular.module('tripplannerApp')
-    .controller('SettingsCtrl', function ($scope, apiService) {
+    .controller('SettingsCtrl', function ($scope, apiService, userService) {
 
 
 
@@ -24,9 +24,17 @@ angular.module('tripplannerApp')
                 });
         };
 
-        $scope.country = "USD";
 
-        $scope.groupSize = 0;
+        /*
+                $scope.country = "USD";
+        
+                $scope.groupSize = 0;
+        */
+        
+
+        $scope.country = userService.getProfile().currentCurrency;
+
+        $scope.groupSize = userService.getProfile().groupSize;
 
 
 

@@ -12,6 +12,9 @@ angular.module('tripplannerApp')
 
 
 
+ //   var userNameWithoutMail = dataService.getUser().email.slice(0, dataService.getUser().email.indexOf("@"));
+   // $scope.userName = userNameWithoutMail;
+
 
 
 

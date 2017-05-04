@@ -3,7 +3,7 @@
 'use strict';
 
 angular.module('tripplannerApp')
-    .service('apiService', function ($http) {
+    .service('apiService', function ($http, userService) {
 
         var auth = {};
 
@@ -57,7 +57,7 @@ angular.module('tripplannerApp')
             },
 
             dateUrl: function (date) {
-                return date.getDate() + "/" + (date.getMonth()+ + 1 ) + "/" + date.getFullYear() + "/";
+                return date.getDate() + "/" + (date.getMonth() + + 1) + "/" + date.getFullYear() + "/";
             },
 
 
@@ -83,7 +83,7 @@ angular.module('tripplannerApp')
             saveSettings: function (countryCode, groupSize) {
                 return $http({
                     method: 'get',
-                    url: this.url() + "user/saveSettings/" + countryCode + "/" + groupSize
+                    url: this.url() + "user/saveSettings/" + userService.getEmail() + "/" + countryCode + "/" + groupSize
                 });
             },
 
@@ -95,6 +95,19 @@ angular.module('tripplannerApp')
                 });
             },
 
+            getProfile: function () {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "user/read/" + userService.getEmail()
+                });
+            },
+
+            logIn: function () {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "user/logIn/" + userService.getEmail()
+                });
+            },
 
 
 
