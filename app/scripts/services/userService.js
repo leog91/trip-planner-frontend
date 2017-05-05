@@ -22,6 +22,8 @@ angular.module('tripplannerApp')
         //m
         var profile = {};
 
+        var isLogged = false;
+
 
 
         return {
@@ -41,7 +43,12 @@ angular.module('tripplannerApp')
                 email = user.email.slice(0, user.email.indexOf("@"));
                 name = user.name;
                 imageUrl = user.imageUrl;
+                isLogged = true;
             },
+
+
+
+            //removeU
 
             getEmail: function () {
                 return email;
@@ -55,9 +62,6 @@ angular.module('tripplannerApp')
                 return imageUrl;
             },
 
-
-
-
             setCountry: function (newCountry) {
                 country = newCountry;
             },
@@ -67,6 +71,17 @@ angular.module('tripplannerApp')
             },
 
 
+
+            isLoggedIn: function () {
+                return isLogged;
+            },
+
+            logOut: function () {
+                email = "";
+                name = "";
+                imageUrl = "";
+                isLogged = false;
+            },
 
         };
     });

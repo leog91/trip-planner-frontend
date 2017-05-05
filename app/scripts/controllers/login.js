@@ -13,6 +13,9 @@ angular.module('tripplannerApp')
 
 
 
+        userService.logOut();
+
+
         $rootScope.$on('event:social-sign-in-success', function (event, userDetails) {
 
             console.log(userDetails);

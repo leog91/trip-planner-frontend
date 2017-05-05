@@ -31,6 +31,33 @@ angular
   })
 
 
+
+
+  .run(function ($rootScope, $location, userService) {
+
+
+
+    $rootScope.$on('$routeChangeStart', function (event) {
+
+      if (!userService.isLoggedIn()) {
+        console.log('DENY');
+        //  event.preventDefault();
+        //alert("Hello! You must loggIn!");
+        $location.path('/login');
+      }
+      else {
+        console.log('ALLOW');
+        // $location.path('/home');
+      }
+    });
+
+
+  })
+
+
+
+
+
   /*
     .config(function ($stateProvider, lockProvider) {
   
