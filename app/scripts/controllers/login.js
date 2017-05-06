@@ -8,28 +8,21 @@
  * Controller of the tripplannerApp
  */
 angular.module('tripplannerApp')
-    //.controller('LoginCtrl', function ($scope, authService) {
     .controller('LoginCtrl', function ($scope, $rootScope, userService, apiService, $window, $location) {
-
 
 
         userService.logOut();
 
 
         $rootScope.$on('event:social-sign-in-success', function (event, userDetails) {
-
             console.log(userDetails);
 
             userService.setUser(userDetails);
-
             apiService.logIn().then(function (response) {
                 console.log("user exist");
-
                 apiService.getProfile().then(function (response) {
                     userService.setProfile(response.data);
                 })
-
-
                 $window.location.href = '/#/main';
             },
                 function (error) {
@@ -53,19 +46,6 @@ angular.module('tripplannerApp')
 
 
 
-
-
-
-
-
-        /*
-        
-                $scope.logggin = function () {
-        
-                    authService.login();
-                    console.log(localStorage);
-                };
-        */
 
 
     });

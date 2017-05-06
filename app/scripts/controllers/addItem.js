@@ -12,60 +12,33 @@ angular.module('tripplannerApp')
 
 
 
-        $scope.test = "bind";
         $scope.myDate = new Date();
 
-        apiService.getItems().then(function (response) {
+        $scope.category = "General";
 
-            $scope.items = response.data;
+        $scope.saveItem = function () {
+            if (isValid()) {
+                save();
+            }
+        }
 
-            console.log("getItems Ok");
-        },
-            function (error) {
-                console.log("getItemsFail");
-            });
+        $scope.categories = [
+            { name: 'General' },
+            { name: 'Food' },
+            { name: 'Lodging' }
+        ];
 
-        //$$phase
-
-        /*if (!$scope.$$phase) {
-            //
-            $digest
-            //or 
-            //$apply
-        }*/
         $scope.item = {
-            name: "baseName",
-            ammount: 0,
-            price: "",
-            currency: "",
-            category: "general"
+            name: "",
+        }
+
+        function isValid() {
+            return ($scope.item.name != "" && $scope.item.ammount != null);
         }
 
 
-
-        $scope.addCurrency = function () {
-            apiService.addRatio();
-
-        };
-
-        /*
-                $scope.saveItem = function () {
-                    $scope.item.currency = userService.getCountry();
-                    console.log("fn test");
-        
-                    apiService.saveItem($scope.item)
-                        .then(function (response) {
-                            console.log("addItem OK");
-                        },
-                        function (error) {
-                            console.log("addItem Fail");
-                        });
-                    console.log($scope.item);
-        
-                };
-        */
-
-        $scope.saveItem = function () {
+        function save() {
+            $scope.item.category = $scope.category;
             $scope.item.currency = userService.getCountry();
             console.log("fn test");
 
@@ -77,9 +50,6 @@ angular.module('tripplannerApp')
                     console.log("addItem Fail");
                 });
             console.log($scope.item);
-
-        };
-
+        }
     });
-
 

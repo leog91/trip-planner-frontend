@@ -17,7 +17,9 @@ angular.module('tripplannerApp')
             apiService.saveSettings($scope.country, $scope.groupSize)
                 .then(function (response) {
                     console.log("save ok");
-                    //getUser
+                    apiService.getProfile().then(function (response) {
+                        userService.setProfile(response.data);
+                    })
                 },
                 function (error) {
                     console.log("save Fail");
@@ -25,12 +27,6 @@ angular.module('tripplannerApp')
         };
 
 
-        /*
-                $scope.country = "USD";
-        
-                $scope.groupSize = 0;
-        */
-        
 
         $scope.country = userService.getProfile().currentCurrency;
 

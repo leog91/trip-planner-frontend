@@ -17,37 +17,18 @@ angular.module('tripplannerApp')
 
 
             url: function () {
-                //
                 return "http://localhost:8080/";
             },
 
-          
-            groupSize: function () {
-                //tt
-                return currentGroupSize;
-            },
-
-            setGroupSize: function (groupSize) {
-                currentGroupSize = groupSize;
-            },
 
 
-            /*            saveItem: function (item) {
-                            return $http({
-                                method: 'post',
-                                url: this.url() + "items",
-                                data: item
-                            });
-                        },
-            */
             saveItem: function (item, date) {
                 return $http({
                     method: 'get',
-                    url: this.url() + "item/add/" + userService.getEmail() + "/" + this.dateUrl(date) + this.itemUrl(item) + "/" + this.groupSize()
+                    url: this.url() + "item/add/" + userService.getEmail() + "/" + this.dateUrl(date) + this.itemUrl(item) + "/" + currentGroupSize
                 });
             },
 
-            //
             itemUrl: function (item) {
                 return item.name + "/" + item.ammount + "/" + item.currency + "/" + item.category
             },
@@ -68,6 +49,14 @@ angular.module('tripplannerApp')
                 return $http({
                     method: 'get',
                     url: this.url() + "item/betweendates/" + userService.getEmail() + "/" + this.dateUrl(dateFrom) + this.dateUrl(dateTo)
+                });
+            },
+
+
+            byCategory: function (category) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "item/categoryuser/" + userService.getEmail() + "/" + category
                 });
             },
 

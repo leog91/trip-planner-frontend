@@ -12,6 +12,19 @@ angular.module('tripplannerApp')
 
         $scope.dateFrom = new Date();
         $scope.dateTo = new Date();
+        $scope.category = "General";
+
+
+
+        $scope.byCategory = function () {
+            apiService.byCategory($scope.category).then(function (response) {
+                var jsonBundle = response.data;
+                $scope.items = jsonBundle;
+            },
+                function (error) {
+                    console.log("getBundleFail");
+                });
+        };
 
 
 
@@ -29,8 +42,7 @@ angular.module('tripplannerApp')
 
         $scope.betweenDates = function () {
 
-            //if(dateFrom < dateTo)
-            apiService.getBetweenDates($scope.dateFrom,$scope.dateTo).then(function (response) {
+            apiService.getBetweenDates($scope.dateFrom, $scope.dateTo).then(function (response) {
                 var jsonBundle = response.data;
                 $scope.items = jsonBundle;
             },
@@ -40,17 +52,11 @@ angular.module('tripplannerApp')
         };
 
 
-
-
-        //$scope.category = "General";
         $scope.categories = [
             { name: 'General' },
             { name: 'Food' },
             { name: 'Lodging' }
         ];
-
-
-
 
 
 

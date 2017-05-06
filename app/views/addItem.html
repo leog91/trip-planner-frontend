@@ -1,41 +1,42 @@
-<p>This is the addItem view.</p>
+
+<br><br><br>
 
 
-{{test}}
-<br> {{item}}
 
 
-<br> __________________________________________
-<br> __________________________________________
-<br><br><br><br><br>
-<div layout-gt-xs="row">
-    <div flex-gt-xs>
-        <h4>Opening the calendar when the input is focused</h4>
-        <md-datepicker ng-model="myDate" md-placeholder="Enter date" md-open-on-focus></md-datepicker>
-    </div>
-</div>
+
+<select class="form-control" ng-model="category">
+    <option value="">-- Select a Category --</option>
+    <option ng-repeat="category in categories" >{{category.name}}</option>
+  </select>
 
 <form novalidate class="form-horizontal">
 
-
-{{items}}
-
-
     <div class="row">
-        <div class="col-md-6">
-            Name
-            <input ng-model="item.name" type="text" class="form-control" placeholder="Name">
-            <br>Ammount
-            <input ng-model="item.ammount" type="text" class="form-control" placeholder="Ammount">
+        <div class="col-md-5">
+            <abm-form-group>
+                <label abm-label type="floating">Item name</label>
+                <input ng-model="item.name" ng-minlength="2" ng-required="true" abm-form-control>
+            </abm-form-group>
             <br>
         </div>
-
-        <div class="col-md-6">
-            Category
-            <input ng-model="item.category" type="text" class="form-control" placeholder="Category">
-            <br> Currency
-            <input ng-model="item.currency" type="text" class="form-control" placeholder="Currency">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-5">
+            <abm-form-group>
+                <label abm-label type="floating">Price</label>
+                <input ng-model="item.ammount" type="number" abm-form-control>
+            </abm-form-group>
             <br>
+        </div>
+    </div>
+    <br>
+    <br>
+
+
+    <div layout-gt-xs="row">
+        <div flex-gt-xs class="text-center">
+            <md-datepicker ng-model="myDate" md-placeholder="Enter date" md-open-on-focus></md-datepicker>
         </div>
     </div>
 </form>
@@ -45,12 +46,8 @@
 
 
 <div class="">
-    <button type="submit" ng-click="saveItem()" class="btn btn-success ">Add item</button>
+    <button type="submit" ng-click="saveItem()" class="btn btn-success  btn-raised btn-block">Add item</button>
 </div>
 
-
-<div class="">
-    <button type="submit" ng-click="addCurrency()" class="btn btn-success ">Add Ratio</button>
-</div>
 
 <br>
