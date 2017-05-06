@@ -16,7 +16,7 @@ angular.module('tripplannerApp')
 
 
         $scope.showAll = function () {
-            apiService.getItems(2).then(function (response) {
+            apiService.getItems().then(function (response) {
                 var jsonBundle = response.data;
                 $scope.items = jsonBundle;
             },

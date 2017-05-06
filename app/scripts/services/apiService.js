@@ -21,11 +21,7 @@ angular.module('tripplannerApp')
                 return "http://localhost:8080/";
             },
 
-            userEmail: function () {
-                //tt
-                return "leog91@gmail.com";
-            },
-
+          
             groupSize: function () {
                 //tt
                 return currentGroupSize;
@@ -47,7 +43,7 @@ angular.module('tripplannerApp')
             saveItem: function (item, date) {
                 return $http({
                     method: 'get',
-                    url: this.url() + "item/add/" + this.userEmail() + "/" + this.dateUrl(date) + this.itemUrl(item) + "/" + this.groupSize()
+                    url: this.url() + "item/add/" + userService.getEmail() + "/" + this.dateUrl(date) + this.itemUrl(item) + "/" + this.groupSize()
                 });
             },
 
@@ -61,17 +57,17 @@ angular.module('tripplannerApp')
             },
 
 
-            getItems: function (userEmail) {
+            getItems: function () {
                 return $http({
                     method: 'get',
-                    url: this.url() + "item/user/" + userEmail
+                    url: this.url() + "item/user/" + userService.getEmail()
                 });
             },
 
             getBetweenDates: function (dateFrom, dateTo) {
                 return $http({
                     method: 'get',
-                    url: this.url() + "item/betweendates/" + "email" + "/" + this.dateUrl(dateFrom) + this.dateUrl(dateTo)
+                    url: this.url() + "item/betweendates/" + userService.getEmail() + "/" + this.dateUrl(dateFrom) + this.dateUrl(dateTo)
                 });
             },
 
@@ -108,6 +104,17 @@ angular.module('tripplannerApp')
                     url: this.url() + "user/logIn/" + userService.getEmail()
                 });
             },
+
+
+
+            coefByCodeAndDate: function (date, code) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "currency/coef/" + code + "/" + this.dateUrl(date)
+                });
+            },
+
+
 
 
 
