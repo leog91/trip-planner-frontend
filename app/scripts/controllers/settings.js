@@ -32,7 +32,9 @@ angular.module('tripplannerApp')
 
         $scope.groupSize = userService.getProfile().groupSize;
 
+        $scope.image = userService.getImage();
 
+        $scope.name = userService.getName();
 
         $scope.countries = [
             { name: 'Afghanistan', code: 'AF' },
