@@ -38,7 +38,7 @@
             <button type="submit" ng-click="byCategory()" class="btn-lg btn-warning btn-block">By Category</button>
         </div>
 
-        
+
         <div class="text-center">
 
 
@@ -78,7 +78,7 @@
 </div>
 
 
-
+<br>
 
 
 
@@ -91,13 +91,18 @@
         <th>Currency</th>
         <th>Amount</th>
         <th>Date</th>
+        <th>Edit</th>
+        <th>Delete</th>
     </thead>
 
     <tr ng-repeat="i in items">
-        <td>{{ i.name }}</td>
-        <td>{{ i.category }}</td>
-        <td>{{ i.currency }}</td>
-        <td>{{ i.ammount }}</td>
-        <td>{{ i.date.dayOfMonth}} - {{i.date.monthOfYear}} -{{ i.date.year }}</td>
+        <td style="padding-top: 25px">{{ i.name }}</td>
+        <td style="padding-top: 25px">{{ i.category }}</td>
+        <td style="padding-top: 25px">{{ i.currency }}</td>
+        <td style="padding-top: 25px">{{ i.ammount }}</td>
+        <td style="padding-top: 25px">{{ i.date.dayOfMonth}} - {{i.date.monthOfYear}} -{{ i.date.year }}</td>
+        <td> <button type="button" class="btn btn-xs">  <i class="material-icons">edit</i></button> </td>
+        <td> <button type="button" ng-click="deleteItem($index)" class="btn btn-xs">  <i class="material-icons">delete</i></button>            </td>
+
     </tr>
 </table>

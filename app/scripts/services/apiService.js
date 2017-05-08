@@ -29,6 +29,14 @@ angular.module('tripplannerApp')
                 });
             },
 
+            deleteItem: function (id) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "item/delete/" + id
+                });
+            },
+
+
             itemUrl: function (item) {
                 return item.name + "/" + item.ammount + "/" + item.currency + "/" + item.category
             },

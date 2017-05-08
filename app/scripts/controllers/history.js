@@ -16,6 +16,21 @@ angular.module('tripplannerApp')
 
 
 
+        $scope.deleteItem = function (index) {
+            console.log(index);
+            console.log($scope.items[index]);
+            var id = $scope.items[index].id;
+
+            apiService.deleteItem(id).then(function (response) {
+                console.log("ok");
+            }, function (error) {
+                console.log("nope");
+            });
+        };
+
+
+
+
         $scope.byCategory = function () {
             apiService.byCategory($scope.category).then(function (response) {
                 var jsonBundle = response.data;
