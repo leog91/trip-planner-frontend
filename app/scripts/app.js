@@ -32,6 +32,29 @@ angular
 
 
 
+//datePicker Config
+.config(function ($mdDateLocaleProvider) {
+    $mdDateLocaleProvider.formatDate = function (date) {
+
+      var format = 'YYYY-MM-DD';
+
+      if ((navigator.language || navigator.userLanguage) === 'es_ES') {
+        format = 'DD-MM-YYYY';
+      }
+
+      else {
+        format = 'MM-DD-YYYY';
+        format = 'DD-MM-YYYY';
+      }
+      //if (document.documentElement.lang === 'en_US') {
+        
+      //}
+      return moment(date).format(format);
+    };
+  })
+
+
+
 
   .run(function ($rootScope, $location, userService) {
 

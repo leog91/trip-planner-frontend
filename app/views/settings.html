@@ -13,7 +13,8 @@
 
     <br><br>
     <span>Country:</span>
-    <select ng-model="country">
+
+    <select class="form-control" ng-model="country">
     <option value="">-- Select a Country --</option>
     <option ng-repeat="country in countries" value="{{country.code}}">{{country.name}}</option>
   </select>

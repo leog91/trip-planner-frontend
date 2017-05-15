@@ -16,6 +16,21 @@ angular.module('tripplannerApp')
 
 
 
+
+/* validate
+$scope.minDateTo = new Date(
+    $scope.dateFrom.getFullYear(),
+    $scope.dateFrom.getMonth(),
+    $scope.dateFrom.getDate()
+  );
+
+
+$scope.maxDateFrom = new Date(
+    $scope.dateTo.getFullYear(),
+    $scope.dateTo.getMonth(),
+    $scope.dateTo.getDate()
+  );
+*/
         $scope.deleteItem = function (index) {
             console.log(index);
             console.log($scope.items[index]);
