@@ -29,6 +29,13 @@ angular.module('tripplannerApp')
                 });
             },
 
+            updateItem: function (item, date, id) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "item/update/" + id + "/" + userService.getEmail() + "/" + this.dateUrl(date) + this.itemUrl(item) + "/" + currentGroupSize
+                });
+            },
+
             deleteItem: function (id) {
                 return $http({
                     method: 'get',
@@ -111,7 +118,19 @@ angular.module('tripplannerApp')
                 });
             },
 
+            addCategory: function (category) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "user/addCategory/" + userService.getEmail() + "/" + category
+                });
+            },
 
+            itemById: function (id) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "item/readId/" + id
+                });
+            },
 
 
 

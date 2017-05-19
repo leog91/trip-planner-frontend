@@ -8,17 +8,33 @@
  * Controller of the tripplannerApp
  */
 angular.module('tripplannerApp')
-    .controller('AddItemCtrl', function ($scope, userService, apiService) {
+    .controller('EditItemCtrl', function ($scope, userService, $routeParams, apiService) {
+
+
+        //$scope.item = apiService.itemById(1).data;
+
+        var itemId = $routeParams.id;
+
+        apiService.itemById(itemId)
+            .then(function (response) {
+                console.log("get itemid ok")
+                $scope.item = response.data;
+                $scope.myDate = new Date($scope.item.date.year, $scope.item.date.monthOfYear - 1, $scope.item.date.dayOfMonth);
+                $scope.category = $scope.item.category;
+                //console.log($scope.item.date.year, $scope.item.monthOfYear, $scope.item.dayOfMonth);
+            },
+            function (error) {
+                console.log("get item fail");
+            });
+
+
+        //$scope.myDate = new Date($scope.item.year, $scope.item.monthOfYear, dayOfMonth, 0, 0, 0, 0);
 
 
 
-        $scope.myDate = new Date();
-
-        $scope.category = "General";
-
-        $scope.saveItem = function () {
+        $scope.updateItem = function () {
             if (isValid()) {
-                save();
+                update();
             }
         }
 
@@ -39,21 +55,21 @@ angular.module('tripplannerApp')
                 ];//.push(userService.getProfile().categories);
         */
 
-        $scope.item = {
-            name: "",
-        }
+        /* $scope.item = {
+             name: "",
+         }*/
 
         function isValid() {
             return ($scope.item.name != "" && $scope.item.ammount != null);
         }
 
 
-        function save() {
+        function update() {
             $scope.item.category = $scope.category;
             $scope.item.currency = userService.getCountry();
             console.log("fn test");
 
-            apiService.saveItem($scope.item, $scope.myDate)
+            apiService.updateItem($scope.item, $scope.myDate, itemId)
                 .then(function (response) {
                     console.log("addItem OK");
                 },

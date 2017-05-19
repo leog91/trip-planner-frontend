@@ -27,6 +27,20 @@ angular.module('tripplannerApp')
         };
 
 
+        $scope.addCategory = function () {
+            apiService.addCategory($scope.newCategory)
+                .then(function (response) {
+                    console.log("addCat ok");
+                },
+                function (error) {
+                    console.log("addCat fail");
+                });
+        };
+
+        $scope.newCategory ="asdasd";
+
+
+
 
         $scope.country = userService.getProfile().currentCurrency;
 

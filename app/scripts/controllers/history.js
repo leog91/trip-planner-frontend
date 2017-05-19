@@ -8,7 +8,7 @@
  * Controller of the tripplannerApp
  */
 angular.module('tripplannerApp')
-    .controller('HistoryCtrl', function ($scope, apiService) {
+    .controller('HistoryCtrl', function ($scope, apiService, $window, $timeout) {
 
         $scope.dateFrom = new Date();
         $scope.dateTo = new Date();
@@ -17,20 +17,20 @@ angular.module('tripplannerApp')
 
 
 
-/* validate
-$scope.minDateTo = new Date(
-    $scope.dateFrom.getFullYear(),
-    $scope.dateFrom.getMonth(),
-    $scope.dateFrom.getDate()
-  );
-
-
-$scope.maxDateFrom = new Date(
-    $scope.dateTo.getFullYear(),
-    $scope.dateTo.getMonth(),
-    $scope.dateTo.getDate()
-  );
-*/
+        /* validate
+        $scope.minDateTo = new Date(
+            $scope.dateFrom.getFullYear(),
+            $scope.dateFrom.getMonth(),
+            $scope.dateFrom.getDate()
+          );
+        
+        
+        $scope.maxDateFrom = new Date(
+            $scope.dateTo.getFullYear(),
+            $scope.dateTo.getMonth(),
+            $scope.dateTo.getDate()
+          );
+        */
         $scope.deleteItem = function (index) {
             console.log(index);
             console.log($scope.items[index]);
@@ -38,9 +38,16 @@ $scope.maxDateFrom = new Date(
 
             apiService.deleteItem(id).then(function (response) {
                 console.log("ok");
+
             }, function (error) {
                 console.log("nope");
             });
+        };
+
+
+        $scope.editItem = function (index) {
+            var id = $scope.items[index].id;
+            $window.location.href = '/#/editItem/' + id;
         };
 
 
@@ -55,6 +62,7 @@ $scope.maxDateFrom = new Date(
                     console.log("getBundleFail");
                 });
         };
+
 
 
 

@@ -146,6 +146,11 @@ angular
         controller: 'SettingsCtrl',
         controllerAs: 'settings'
       })
+      .when('/editItem/:id', {
+        templateUrl: 'views/editItem.html',
+        controller: 'EditItemCtrl',
+        controllerAs: 'editItem'
+      })
       .when('/history', {
         templateUrl: 'views/history.html',
         controller: 'HistoryCtrl',

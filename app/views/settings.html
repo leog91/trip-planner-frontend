@@ -2,14 +2,14 @@
 
     <br>
     <h1>
-{{name}}</h1>
+        {{name}}</h1>
 
-<br>
+    <br>
 
 
-<img src="{{image}}" class="img-responsive center-block" alt="Profile pic">
+    <img src="{{image}}" class="img-responsive center-block" alt="Profile pic">
 
- 
+
 
     <br><br>
     <span>Country:</span>
@@ -24,7 +24,7 @@
     <h2>Current Currency: {{country}}</h2>
 
     <br><br>
-<!--
+    <!--
     <form novalidate class="form-horizontal">
         <abm-form-group>
             <label abm-label type="floating">Group Size</label>
@@ -32,6 +32,35 @@
         </abm-form-group>
     </form>
 -->
+
+    {{newCategory}}
+
+    <div class="row">
+        <form novalidate class="form-horizontal">
+            <div class="col-md-4">
+
+                <abm-form-group>
+                    <label abm-label type="floating">Category name</label>
+                    <input ng-model="newCategory" ng-minlength="2" ng-required="true" abm-form-control>
+                </abm-form-group>
+            </div>
+        </form>
+        <div class="col-md-4">
+        </div>
+
+
+        <div class="col-md-4">
+
+
+
+
+            <div class="">
+                <button type="submit" ng-click="addCategory()" class="btn btn-success  btn-raised ">Add Category</button>
+            </div>
+
+        </div>
+    </div>
+
 
     <h2>Group Size: {{groupSize}}</h2>
 
