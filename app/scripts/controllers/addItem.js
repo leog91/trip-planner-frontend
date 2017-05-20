@@ -8,7 +8,7 @@
  * Controller of the tripplannerApp
  */
 angular.module('tripplannerApp')
-    .controller('AddItemCtrl', function ($scope, userService, apiService) {
+    .controller('AddItemCtrl', function ($scope, userService, Flash, apiService) {
 
 
 
@@ -19,6 +19,10 @@ angular.module('tripplannerApp')
         $scope.saveItem = function () {
             if (isValid()) {
                 save();
+            }
+            else {
+                var message = '<strong>Ups!</strong> Name must be atleast 2 char long .';
+                Flash.create('danger', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
             }
         }
 
@@ -44,7 +48,7 @@ angular.module('tripplannerApp')
         }
 
         function isValid() {
-            return ($scope.item.name != "" && $scope.item.ammount != null);
+            return ($scope.item.name != null && $scope.item.ammount != null);
         }
 
 
@@ -56,9 +60,13 @@ angular.module('tripplannerApp')
             apiService.saveItem($scope.item, $scope.myDate)
                 .then(function (response) {
                     console.log("addItem OK");
+                    var message = '<strong>Well done!</strong>Item added  successfully.';
+                    Flash.create('success', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
                 },
                 function (error) {
                     console.log("addItem Fail");
+                    var message = '<strong>Ups!</strong> Try again.';
+                    Flash.create('danger', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
                 });
             console.log($scope.item);
         }

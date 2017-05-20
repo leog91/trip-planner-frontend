@@ -8,10 +8,9 @@
  * Controller of the tripplannerApp
  */
 angular.module('tripplannerApp')
-    .controller('EditItemCtrl', function ($scope, userService, $routeParams, apiService) {
+    .controller('EditItemCtrl', function ($scope, userService, $routeParams, Flash, apiService) {
 
 
-        //$scope.item = apiService.itemById(1).data;
 
         var itemId = $routeParams.id;
 
@@ -21,20 +20,22 @@ angular.module('tripplannerApp')
                 $scope.item = response.data;
                 $scope.myDate = new Date($scope.item.date.year, $scope.item.date.monthOfYear - 1, $scope.item.date.dayOfMonth);
                 $scope.category = $scope.item.category;
-                //console.log($scope.item.date.year, $scope.item.monthOfYear, $scope.item.dayOfMonth);
             },
             function (error) {
                 console.log("get item fail");
             });
 
 
-        //$scope.myDate = new Date($scope.item.year, $scope.item.monthOfYear, dayOfMonth, 0, 0, 0, 0);
 
 
 
         $scope.updateItem = function () {
             if (isValid()) {
                 update();
+            }
+            else {
+                var message = '<strong>Ups!</strong> Name must be atleast 2 char long .';
+                Flash.create('danger', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
             }
         }
 
@@ -46,21 +47,10 @@ angular.module('tripplannerApp')
 
         $scope.categories = $scope.preset.concat(userService.getProfile().categories);
 
-        /*
-        
-                $scope.categories = [
-                    { name: 'General' },
-                    { name: 'Food' },
-                    { name: 'Lodging' }
-                ];//.push(userService.getProfile().categories);
-        */
-
-        /* $scope.item = {
-             name: "",
-         }*/
+     
 
         function isValid() {
-            return ($scope.item.name != "" && $scope.item.ammount != null);
+            return ($scope.item.name != null && $scope.item.ammount != null);
         }
 
 
@@ -71,10 +61,12 @@ angular.module('tripplannerApp')
 
             apiService.updateItem($scope.item, $scope.myDate, itemId)
                 .then(function (response) {
-                    console.log("addItem OK");
+                    var message = '<strong>Well done!</strong> Item  edited successfully.';
+                    Flash.create('success', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
                 },
                 function (error) {
-                    console.log("addItem Fail");
+                    var message = '<strong>Ups!</strong> Try again.';
+                    Flash.create('danger', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
                 });
             console.log($scope.item);
         }

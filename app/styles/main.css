@@ -1,3 +1,20 @@
+
+.zindex{
+  
+  
+
+ /*
+  top: 65px;
+  position: fixed;
+*/
+ position: fixed;
+  z-index: 3 ;
+
+
+}
+
+
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;

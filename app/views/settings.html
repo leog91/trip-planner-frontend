@@ -33,19 +33,28 @@
     </form>
 -->
 
-    {{newCategory}}
 
+
+    <!-- ----- {{category}} -----  -->
     <div class="row">
-        <form novalidate class="form-horizontal">
+        <input ng-model="category" type="text" ng-minlength="2" ng-required="true" class="form-control" placeholder="Name">
+
+        <!--
+            
+            <form novalidate class="form-horizontal">
             <div class="col-md-4">
 
                 <abm-form-group>
                     <label abm-label type="floating">Category name</label>
-                    <input ng-model="newCategory" ng-minlength="2" ng-required="true" abm-form-control>
+                    <input ng-model="category" ng-minlength="2" ng-required="true" abm-form-control>
                 </abm-form-group>
             </div>
-        </form>
+        </form>  
+        
+        -->
         <div class="col-md-4">
+
+
         </div>
 
 

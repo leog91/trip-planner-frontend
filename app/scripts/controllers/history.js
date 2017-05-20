@@ -8,7 +8,7 @@
  * Controller of the tripplannerApp
  */
 angular.module('tripplannerApp')
-    .controller('HistoryCtrl', function ($scope, apiService, $window, $timeout) {
+    .controller('HistoryCtrl', function ($scope, apiService, userService, $window, Flash, $timeout) {
 
         $scope.dateFrom = new Date();
         $scope.dateTo = new Date();
@@ -38,9 +38,12 @@ angular.module('tripplannerApp')
 
             apiService.deleteItem(id).then(function (response) {
                 console.log("ok");
-
+                var message = '<strong>Well done!</strong> Item  deleted successfully.';
+                Flash.create('success', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
             }, function (error) {
                 console.log("nope");
+                var message = '<strong>Ups!</strong> Try again.';
+                Flash.create('danger', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
             });
         };
 
@@ -89,12 +92,16 @@ angular.module('tripplannerApp')
                 });
         };
 
+     
 
-        $scope.categories = [
-            { name: 'General' },
-            { name: 'Food' },
-            { name: 'Lodging' }
+        $scope.preset = [
+            "General",
+            "Food",
+            "Lodging"
         ];
+
+        $scope.categories = $scope.preset.concat(userService.getProfile().categories);
+
 
 
 
