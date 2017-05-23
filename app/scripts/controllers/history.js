@@ -38,6 +38,7 @@ angular.module('tripplannerApp')
 
             apiService.deleteItem(id).then(function (response) {
                 console.log("ok");
+                $scope.items.splice(index,1);
                 var message = '<strong>Well done!</strong> Item  deleted successfully.';
                 Flash.create('success', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
             }, function (error) {
