@@ -59,6 +59,13 @@ angular.module('tripplannerApp')
                     url: this.url() + "item/user/" + userService.getEmail()
                 });
             },
+            getItemsSum: function () {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "item/userSum/" + userService.getEmail() + "/" + userService.getProfile().currentCurrency
+                });
+            },
+
 
             getBetweenDates: function (dateFrom, dateTo) {
                 return $http({
@@ -82,7 +89,7 @@ angular.module('tripplannerApp')
 
             saveSettings: function (countryCode, groupSize) {
                 return $http({
-                    method: 'get',
+                    method: 'post',
                     url: this.url() + "user/saveSettings/" + userService.getEmail() + "/" + countryCode + "/" + groupSize
                 });
             },

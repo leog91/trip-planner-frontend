@@ -14,7 +14,8 @@ angular.module('tripplannerApp')
         $scope.dateTo = new Date();
         $scope.category = "General";
 
-
+        $scope.amount = 0;
+        $scope.currency = userService.getProfile().currentCurrency;
 
 
         /* validate
@@ -38,7 +39,7 @@ angular.module('tripplannerApp')
 
             apiService.deleteItem(id).then(function (response) {
                 console.log("ok");
-                $scope.items.splice(index,1);
+                $scope.items.splice(index, 1);
                 var message = '<strong>Well done!</strong> Item  deleted successfully.';
                 Flash.create('success', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
             }, function (error) {
@@ -78,6 +79,15 @@ angular.module('tripplannerApp')
                 function (error) {
                     console.log("getBundleFail");
                 });
+
+            apiService.getItemsSum().then(function (response) {
+                $scope.amount = response.data;
+            },
+                function (error) {
+                    console.log("getBundle SUM Fail");
+                });
+            
+
         };
 
 
@@ -93,7 +103,7 @@ angular.module('tripplannerApp')
                 });
         };
 
-     
+
 
         $scope.preset = [
             "General",
