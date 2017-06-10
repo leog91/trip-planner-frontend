@@ -70,6 +70,13 @@ angular.module('tripplannerApp')
                 function (error) {
                     console.log("getBundleFail");
                 });
+            apiService.byCategorySum($scope.category).then(function (response) {
+                $scope.amount = response.data;
+            },
+                function (error) {
+                    console.log("getBundle SUM Fail");
+                });
+
         };
 
 
@@ -90,7 +97,7 @@ angular.module('tripplannerApp')
                 function (error) {
                     console.log("getBundle SUM Fail");
                 });
-            
+
 
         };
 
@@ -105,6 +112,15 @@ angular.module('tripplannerApp')
                 function (error) {
                     console.log("getBundleFail");
                 });
+
+            apiService.getBetweenDatesSum($scope.dateFrom, $scope.dateTo).then(function (response) {
+                $scope.amount = response.data;
+            },
+                function (error) {
+                    console.log("getBundle SUM Fail");
+                });
+
+
         };
 
 

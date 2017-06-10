@@ -74,11 +74,25 @@ angular.module('tripplannerApp')
                 });
             },
 
+            getBetweenDatesSum: function (dateFrom, dateTo) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "item/betweendatesSum/" + userService.getEmail() + "/" + this.dateUrl(dateFrom) + this.dateUrl(dateTo)  + userService.getProfile().currentCurrency
+                });
+            },
+
 
             byCategory: function (category) {
                 return $http({
                     method: 'get',
                     url: this.url() + "item/categoryuser/" + userService.getEmail() + "/" + category
+                });
+            },
+
+            byCategorySum: function (category) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "item/categoryuserSum/" + userService.getEmail() + "/" + category + "/" + userService.getProfile().currentCurrency
                 });
             },
 
