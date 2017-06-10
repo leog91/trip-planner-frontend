@@ -157,6 +157,11 @@ angular
         controller: 'HistoryCtrl',
         controllerAs: 'history'
       })
+      .when('/trip', {
+        templateUrl: 'views/trip.html',
+        controller: 'TripCtrl',
+        controllerAs: 'trip'
+      })
       .otherwise({
         redirectTo: '/'
       });

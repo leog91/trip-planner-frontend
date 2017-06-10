@@ -17,6 +17,10 @@ angular.module('tripplannerApp')
         $scope.amount = 0;
         $scope.currency = userService.getProfile().currentCurrency;
 
+        $scope.items = userService.getHistory();
+        userService.clearHistory();
+
+
 
         /* validate
         $scope.minDateTo = new Date(

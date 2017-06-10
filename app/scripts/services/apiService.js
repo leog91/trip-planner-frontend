@@ -139,7 +139,34 @@ angular.module('tripplannerApp')
                 });
             },
 
+            saveTrip: function (dateFrom, dateTo, name, info) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "trip/add/" + userService.getEmail() + "/" + this.dateUrl(dateFrom) + this.dateUrl(dateTo) + name + "/" + info
+                });
+            },
 
+            getTrips: function () {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "trip/user/" + userService.getEmail()
+                });
+            },
+
+            readTripItems: function (id) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "trip/items/" + id
+                });
+            },
+
+
+            deleteTrip: function (id) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "trip/delete/" + id
+                });
+            },
 
         };
     });

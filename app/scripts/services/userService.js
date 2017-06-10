@@ -24,6 +24,9 @@ angular.module('tripplannerApp')
 
         var isLogged = false;
 
+        var history = {};
+
+        //var hasHistory = false;
 
 
         return {
@@ -34,6 +37,18 @@ angular.module('tripplannerApp')
 
             getProfile: function () {
                 return profile;
+            },
+
+            clearHistory: function(){
+                history = {};
+            },
+
+            setHistory: function (items) {
+                history = items;
+            },
+
+            getHistory: function () {
+                return history;
             },
 
 
