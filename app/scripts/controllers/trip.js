@@ -23,16 +23,24 @@ angular.module('tripplannerApp')
         $scope.dateTo = new Date();
 
 
+
         $scope.saveTrip = function () {
             if (isValid()) {
                 save();
             }
             else {
-                var message = '<strong>Ups!</strong> Name must be atleast 2 char long .';
+                var message = '<strong>Ups!</strong> Name/info must be atleast 2 char long .';
                 Flash.create('danger', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
             }
         }
 
+
+
+
+        function isValid() {
+            return ($scope.name != null && $scope.name.length > 1) && 
+            ($scope.info != null && $scope.info.length > 1);
+        }
 
 
 
@@ -87,10 +95,6 @@ angular.module('tripplannerApp')
 
 
 
-        function isValid() {
-            //return ($scope.name != null && $scope.info != null);
-            return true;
-        }
 
 
         function save() {

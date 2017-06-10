@@ -12,6 +12,8 @@ angular.module('tripplannerApp')
 
         $scope.category = "Category";
 
+        $scope.categories = userService.getProfile().categories;
+
         $scope.saveSettings = function () {
 
             apiService.saveSettings($scope.country, $scope.groupSize)
@@ -31,7 +33,13 @@ angular.module('tripplannerApp')
         };
 
 
-        $scope.addCategory = function () {
+
+        function isValid() {
+            return ($scope.category != null && $scope.category.length > 1);
+        }
+
+
+        function saveCategory() {
             apiService.addCategory($scope.category)
                 .then(function (response) {
                     var message = '<strong>Well done!</strong>Category added  successfully.';
@@ -39,6 +47,7 @@ angular.module('tripplannerApp')
                     console.log("addCat ok");
                     apiService.getProfile().then(function (response) {
                         userService.setProfile(response.data);
+                        $scope.categories = userService.getProfile().categories;
                     })
                 },
                 function (error) {
@@ -46,6 +55,44 @@ angular.module('tripplannerApp')
                     Flash.create('danger', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
                     console.log("addCat fail");
                 });
+
+
+        }
+
+
+        $scope.addCategory = function () {
+            if (isValid()) {
+                saveCategory()
+            }
+            else {
+                var message = '<strong>Ups!</strong> Must have atleast 2 chars .';
+                Flash.create('danger', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
+            }
+
+        }
+
+
+        $scope.deleteCategory = function (index) {
+
+            var c = $scope.categories[index];
+            apiService.removeCategory(c)
+                .then(function (response) {
+                    var message = '<strong>Well done!</strong>Category deleted  successfully.';
+                    Flash.create('success', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
+
+                    apiService.getProfile().then(function (response) {
+                        userService.setProfile(response.data);
+                        $scope.categories = userService.getProfile().categories;
+                    })
+
+
+                },
+                function (error) {
+                    var message = '<strong>Ups!</strong> Delete fail .';
+                    Flash.create('danger', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
+                    console.log("addCat fail");
+                });
+
         };
 
 

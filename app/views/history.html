@@ -43,7 +43,7 @@
 
 
             <select class="form-control" ng-model="category">
-    <option value="">-- Select a Category --</option>
+    
     <option ng-repeat="category in categories" >{{category}}</option>
   </select>
         </div>
@@ -68,8 +68,8 @@
 
         <div class="text-center">
             <div flex-gt-xs>
-                <md-datepicker ng-model="dateFrom" md-placeholder="From" md-open-on-focus ></md-datepicker>
-                <md-datepicker ng-model="dateTo" md-placeholder="To" md-open-on-focus ></md-datepicker>
+                <md-datepicker ng-model="dateFrom" md-placeholder="From" md-open-on-focus></md-datepicker>
+                <md-datepicker ng-model="dateTo" md-placeholder="To" md-open-on-focus></md-datepicker>
             </div>
 
         </div>
@@ -101,12 +101,14 @@
         <td style="padding-top: 25px">{{ i.currency }}</td>
         <td style="padding-top: 25px">{{ i.ammount }}</td>
         <td style="padding-top: 25px">{{ i.date.dayOfMonth}} - {{i.date.monthOfYear}} -{{ i.date.year }}</td>
-        <td> <button type="button" ng-click="editItem($index)" class="btn btn-xs">  <i class="material-icons">edit</i></button> </td>
+        <td> <button type="button" ng-click="editItem($index)" class="btn btn-xs">  <i class="material-icons">edit</i></button>            </td>
         <td> <button type="button" ng-click="deleteItem($index)" class="btn btn-xs">  <i class="material-icons">delete</i></button>            </td>
 
     </tr>
 </table>
 
 <div class="text-center">
-<h2>{{currency}} {{amount}} </h2>
+    <h2>{{currency}} {{amount}} </h2>
 </div>
+
+<button type="submit" ng-click="addItem()" class="btn-lg btn-success btn-raised">Add Item</button>

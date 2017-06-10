@@ -50,6 +50,12 @@ angular.module('tripplannerApp')
         function isValid() {
             return ($scope.item.name != null && $scope.item.ammount != null);
         }
+        /*
+                function isValidDate() {
+                    console.log(moment($scope.myDate, 'DD-MM-YYYY', true).isValid());
+                    return moment($scope.myDate, 'DD-MM-YYYY', true).isValid();
+                }
+        */
 
 
         function save() {

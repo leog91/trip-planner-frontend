@@ -24,6 +24,17 @@
     <h2>Current Currency: {{country}}</h2>
 
     <br><br>
+
+
+    <h2>Group Size: {{groupSize}}</h2>
+
+    <br><br>
+
+    <div class="">
+        <button type="submit" ng-click="saveSettings()" class="btn-lg btn-info btn-block">Save Settings</button>
+    </div>
+
+    <br><br><br>
     <!--
     <form novalidate class="form-horizontal">
         <abm-form-group>
@@ -36,8 +47,23 @@
 
 
     <!-- ----- {{category}} -----  -->
+
+    <h2> Personal Categories </h2>
+
+    <table class="table table-striped">
+
+        <tr ng-repeat="c in categories">
+            <td style="padding-top: 25px">{{ c }}</td>
+
+            <td> <button type="button" ng-click="deleteCategory($index)" class="btn btn-xs">  <i class="material-icons">delete</i></button>                </td>
+        </tr>
+    </table>
+
+
+    <input ng-model="category" type="text" ng-minlength="2" ng-required="true" class="form-control" placeholder="Name">
+
     <div class="row">
-        <input ng-model="category" type="text" ng-minlength="2" ng-required="true" class="form-control" placeholder="Name">
+
 
         <!--
             
@@ -71,13 +97,6 @@
     </div>
 
 
-    <h2>Group Size: {{groupSize}}</h2>
-
-    <br><br>
-
-    <div class="">
-        <button type="submit" ng-click="saveSettings()" class="btn-lg btn-info btn-block">Save Settings</button>
-    </div>
 
 
 </div>

@@ -77,7 +77,7 @@ angular.module('tripplannerApp')
             getBetweenDatesSum: function (dateFrom, dateTo) {
                 return $http({
                     method: 'get',
-                    url: this.url() + "item/betweendatesSum/" + userService.getEmail() + "/" + this.dateUrl(dateFrom) + this.dateUrl(dateTo)  + userService.getProfile().currentCurrency
+                    url: this.url() + "item/betweendatesSum/" + userService.getEmail() + "/" + this.dateUrl(dateFrom) + this.dateUrl(dateTo) + userService.getProfile().currentCurrency
                 });
             },
 
@@ -143,6 +143,13 @@ angular.module('tripplannerApp')
                 return $http({
                     method: 'get',
                     url: this.url() + "user/addCategory/" + userService.getEmail() + "/" + category
+                });
+            },
+
+            removeCategory: function (category) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "user/removeCategory/" + userService.getEmail() + "/" + category
                 });
             },
 

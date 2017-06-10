@@ -61,6 +61,8 @@ angular.module('tripplannerApp')
 
 
 
+        //function isCategoryValid() {return ($scope.item.name != null && $scope.item.ammount != null);        }
+
 
         $scope.byCategory = function () {
             apiService.byCategory($scope.category).then(function (response) {
@@ -103,8 +105,25 @@ angular.module('tripplannerApp')
 
 
 
-        $scope.betweenDates = function () {
 
+
+        $scope.addItem = function () {
+            $window.location.href = '/#/addItem/';
+        }
+
+        $scope.betweenDates = function () {
+            if (isValidBetweenDates()) {
+                findBetweenDates();
+            } else {
+                var message = '<strong>Ups!</strong> Invalid date range.';
+                Flash.create('danger', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
+            }
+
+
+        };
+
+
+        function findBetweenDates() {
             apiService.getBetweenDates($scope.dateFrom, $scope.dateTo).then(function (response) {
                 var jsonBundle = response.data;
                 $scope.items = jsonBundle;
@@ -119,8 +138,16 @@ angular.module('tripplannerApp')
                 function (error) {
                     console.log("getBundle SUM Fail");
                 });
+        };
 
 
+        function isValidBetweenDates() {
+            /*
+            console.log($scope.dateFrom);
+            console.log($scope.dateTo);
+            return ($scope.dateFrom > $scope.dateFrom);
+*/
+            return true;
         };
 
 
