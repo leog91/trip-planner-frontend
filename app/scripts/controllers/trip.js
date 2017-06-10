@@ -19,8 +19,9 @@ angular.module('tripplannerApp')
                 console.log("get Trips Fail");
             });
 
-        $scope.dateFrom = new Date();
-        $scope.dateTo = new Date();
+        var today = new Date();
+        $scope.dateFrom = today;
+        $scope.dateTo = today;
 
 
 
@@ -39,7 +40,8 @@ angular.module('tripplannerApp')
 
         function isValid() {
             return ($scope.name != null && $scope.name.length > 1) && 
-            ($scope.info != null && $scope.info.length > 1);
+            ($scope.info != null && $scope.info.length > 1) &&
+            ($scope.dateFrom <= $scope.dateTo);
         }
 
 
