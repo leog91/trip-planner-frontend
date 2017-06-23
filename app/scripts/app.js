@@ -8,14 +8,20 @@
  *
  * Main module of the application.
  */
+//angular
+//	.module('ngMaterial', ["ng","ngAnimate","ngAria"])
+
 angular
   .module('tripplannerApp', [
+    'ng',
     'ngAnimate',
+
     'ngCookies',
     'ngResource',
     'ngRoute',
     'ngSanitize',
     //'ngTouch',
+    //'ngAria',
     'ngMaterial',
     'ngFlash',
     'angularBootstrapMaterial',

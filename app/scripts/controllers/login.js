@@ -8,7 +8,7 @@
  * Controller of the tripplannerApp
  */
 angular.module('tripplannerApp')
-    .controller('LoginCtrl', function ($scope, $rootScope, userService, apiService, $window, $location) {
+    .controller('LoginCtrl', function ($scope, $rootScope, userService, socialLoginService, apiService, $window, $location) {
 
 
         userService.logOut();
@@ -39,11 +39,16 @@ angular.module('tripplannerApp')
             socialLoginService.logout();
         }
 
+        /*
         $scope.$on('event:social-sign-out-success', function (event, userDetails) {
             $scope.result = userDetails;
+            $scope.$apply();
+        })*/
+
+        $scope.$on('event:social-sign-in-success', (event, userDetails) => {
+            $scope.result = userDetails;
+            $scope.$apply();
         })
-
-
 
 
 
