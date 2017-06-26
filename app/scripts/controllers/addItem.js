@@ -8,22 +8,36 @@
  * Controller of the tripplannerApp
  */
 angular.module('tripplannerApp')
-    .controller('AddItemCtrl', function ($scope, userService, Flash, apiService) {
+    .controller('AddItemCtrl', function ($scope, userService, Flash, apiService, $timeout, item) {
 
 
+        $scope.isEdit = item.getIsEdit();
+        $scope.isAdd = !(item.getIsEdit());
 
-        $scope.myDate = new Date();
+        $scope.item = {};
 
-        $scope.category = "General";
+        var itemId;
+        apiService.getProfile().then(function (response) {
+            $scope.item = item.get();
+            var itemId = item.getId();
+            $scope.category = item.get().category;
+            $scope.myDate = item.get().date;
+
+        }, function (error) {
+            console.log("conection error");
+        });
+
+        item.clear();
+        item.clearEdit();
 
         $scope.saveItem = function () {
-            if (isValid()) {
-                save();
-            }
-            else {
-                var message = '<strong>Ups!</strong> Name must be atleast 2 char long .';
-                Flash.create('danger', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
-            }
+            $scope.item.category = $scope.category;
+            item.save($scope.item, $scope.myDate);
+        }
+
+        $scope.updateItem = function () {
+            $scope.item.category = $scope.category;
+            item.update($scope.item, $scope.myDate, $scope.item.id);
         }
 
         $scope.preset = [
@@ -34,47 +48,13 @@ angular.module('tripplannerApp')
 
         $scope.categories = $scope.preset.concat(userService.getProfile().categories);
 
-        /*
-        
-                $scope.categories = [
-                    { name: 'General' },
-                    { name: 'Food' },
-                    { name: 'Lodging' }
-                ];//.push(userService.getProfile().categories);
-        */
 
-        $scope.item = {
-            name: "",
-        }
+        $scope.isFalse = false;
 
-        function isValid() {
-            return ($scope.item.name != null && $scope.item.ammount != null);
-        }
-        /*
-                function isValidDate() {
-                    console.log(moment($scope.myDate, 'DD-MM-YYYY', true).isValid());
-                    return moment($scope.myDate, 'DD-MM-YYYY', true).isValid();
-                }
-        */
+        $scope.isTrue = true;
 
 
-        function save() {
-            $scope.item.category = $scope.category;
-            $scope.item.currency = userService.getCountry();
-            console.log("fn test");
 
-            apiService.saveItem($scope.item, $scope.myDate)
-                .then(function (response) {
-                    console.log("addItem OK");
-                    var message = '<strong>Well done!</strong>Item added  successfully.';
-                    Flash.create('success', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
-                },
-                function (error) {
-                    console.log("addItem Fail");
-                    var message = '<strong>Ups!</strong> Try again.';
-                    Flash.create('danger', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
-                });
-            console.log($scope.item);
-        }
+
     });
 

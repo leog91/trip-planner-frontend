@@ -8,7 +8,7 @@
  * Controller of the tripplannerApp
  */
 angular.module('tripplannerApp')
-    .controller('HistoryCtrl', function ($scope, apiService, userService, $window, Flash, $timeout) {
+    .controller('HistoryCtrl', function ($scope, apiService, userService, $window, Flash, $timeout, item) {
 
         $scope.dateFrom = new Date();
         $scope.dateTo = new Date();
@@ -56,7 +56,9 @@ angular.module('tripplannerApp')
 
         $scope.editItem = function (index) {
             var id = $scope.items[index].id;
-            $window.location.href = '/#/editItem/' + id;
+            //$window.location.href = '/#/editItem/' + id;
+            item.setId(id);
+            $window.location.href = '/#/addItem/';
         };
 
 

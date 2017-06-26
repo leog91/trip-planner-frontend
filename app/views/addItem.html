@@ -1,8 +1,20 @@
+<!--<br>
+<br><br> {{iddd}} {{item}}
 
-<br><br><br>
+<br><br> {{asd}}
+<br><br>
+isadd{{isAdd}}
+<br>
+isEdiit{{isEdit}}-->
 
 
+<div class="text-center" ng-if="isAdd">
+    <h1>Adding </h1>
+</div>
 
+<div class="text-center" ng-if="isEdit">
+    <h1>Editing </h1>
+</div>
 
 
 <select class="form-control" ng-model="category">
@@ -16,7 +28,7 @@
         <div class="col-md-5">
             <abm-form-group>
                 <label abm-label type="floating">Item name</label>
-                <input ng-model="item.name" ng-minlength="2" ng-required="true" abm-form-control>
+                <input ng-model="item.name" abm-form-control>
             </abm-form-group>
             <br>
         </div>
@@ -45,9 +57,22 @@
 </div>
 
 
-<div class="">
+
+<div ng-if="isEdit">
+
+    <button type="submit" ng-click="updateItem()" class="btn btn-success  btn-raised btn-block">Edit item</button>
+</div>
+
+<div ng-if="isAdd">
+
     <button type="submit" ng-click="saveItem()" class="btn btn-success  btn-raised btn-block">Add item</button>
 </div>
 
+
+<!--
+<div class="">
+    <button type="submit" ng-click="saveItem()" class="btn btn-success  btn-raised btn-block">Add item</button>
+</div>
+-->
 
 <br>
