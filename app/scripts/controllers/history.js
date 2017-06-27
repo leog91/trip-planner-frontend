@@ -22,6 +22,8 @@ angular.module('tripplannerApp')
         $scope.items = userService.getHistory();
         userService.clearHistory();
 
+        var lastRequest = "";
+
 
 
         /* validate
@@ -48,6 +50,13 @@ angular.module('tripplannerApp')
                 $scope.items.splice(index, 1);
                 var message = '<strong>Well done!</strong> Item  deleted successfully.';
                 Flash.create('success', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
+
+                sumOnDelete();
+
+
+
+
+
             }, function (error) {
                 console.log("nope");
                 var message = '<strong>Ups!</strong> Try again.';
@@ -72,6 +81,7 @@ angular.module('tripplannerApp')
             apiService.byCategory($scope.category).then(function (response) {
                 var jsonBundle = response.data;
                 $scope.items = jsonBundle;
+                lastRequest = "byCategory";
             },
                 function (error) {
                     console.log("getBundleFail");
@@ -92,6 +102,7 @@ angular.module('tripplannerApp')
             apiService.getItems().then(function (response) {
                 var jsonBundle = response.data;
                 $scope.items = jsonBundle;
+                lastRequest = "showAll";
             },
                 function (error) {
                     console.log("getBundleFail");
@@ -131,6 +142,7 @@ angular.module('tripplannerApp')
             apiService.getBetweenDates($scope.dateFrom, $scope.dateTo).then(function (response) {
                 var jsonBundle = response.data;
                 $scope.items = jsonBundle;
+                lastRequest = "findBetweenDates";
             },
                 function (error) {
                     console.log("getBundleFail");
@@ -153,6 +165,36 @@ angular.module('tripplannerApp')
             return ($scope.dateFrom > $scope.dateFrom);
 */
             //return true;
+        };
+
+        function sumOnDelete() {
+            if (lastRequest == "byCategory") {
+                apiService.byCategorySum($scope.category).then(function (response) {
+                    $scope.amount = response.data;
+                },
+                    function (error) {
+                        console.log("getBundle SUM Fail");
+                    });
+            }
+
+            if (lastRequest == "showAll") {
+                apiService.getItemsSum().then(function (response) {
+                    $scope.amount = response.data;
+                },
+                    function (error) {
+                        console.log("getBundle SUM Fail");
+                    });
+            }
+
+            if (lastRequest == "findBetweenDates") {
+                apiService.getBetweenDatesSum($scope.dateFrom, $scope.dateTo).then(function (response) {
+                    $scope.amount = response.data;
+                },
+                    function (error) {
+                        console.log("getBundle SUM Fail");
+                    });
+            }
+
         };
 
 
