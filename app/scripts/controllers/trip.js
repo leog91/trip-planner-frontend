@@ -8,7 +8,7 @@
  * Controller of the tripplannerApp
  */
 angular.module('tripplannerApp')
-    .controller('TripCtrl', function ($scope, apiService, $window, Flash, userService) {
+    .controller('TripCtrl', function ($scope, apiService, $window, Flash, userService, validator) {
 
 
         apiService.getTrips().then(function (response) {
@@ -30,8 +30,8 @@ angular.module('tripplannerApp')
                 save();
             }
             else {
-                var message = '<strong>Ups!</strong> Name/info must be atleast 2 char long .';
-                Flash.create('danger', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
+                //var message = '<strong>Ups!</strong> Name/info must be atleast 2 char long .';
+              //  Flash.create('danger', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
             }
         }
 
@@ -39,9 +39,12 @@ angular.module('tripplannerApp')
 
 
         function isValid() {
-            return ($scope.name != null && $scope.name.length > 1) &&
-                ($scope.info != null && $scope.info.length > 1) &&
-                ($scope.dateFrom <= $scope.dateTo);
+            return validator.minimunLength(1, $scope.name, " Name") &&
+                validator.minimunLength(1, $scope.info, " Info") &&
+                //($scope.name != null && $scope.name.length > 1) &&
+                //  ($scope.info != null && $scope.info.length > 1) &&
+                validator.checkDateRange($scope.dateFrom, $scope.dateTo);
+            //($scope.dateFrom <= $scope.dateTo);
         }
 
 

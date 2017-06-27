@@ -8,10 +8,12 @@
  * Controller of the tripplannerApp
  */
 angular.module('tripplannerApp')
-    .controller('HistoryCtrl', function ($scope, apiService, userService, $window, Flash, $timeout, item) {
+    .controller('HistoryCtrl', function ($scope, apiService, userService, $window, Flash, $timeout, validator, item) {
 
-        $scope.dateFrom = new Date();
-        $scope.dateTo = new Date();
+        var today = new Date();
+        $scope.dateFrom = today;
+        $scope.dateTo = today;
+
         $scope.category = "General";
 
         $scope.amount = 0;
@@ -117,8 +119,8 @@ angular.module('tripplannerApp')
             if (isValidBetweenDates()) {
                 findBetweenDates();
             } else {
-                var message = '<strong>Ups!</strong> Invalid date range.';
-                Flash.create('danger', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
+                //var message = '<strong>Ups!</strong> Invalid date range.';
+                //Flash.create('danger', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
             }
 
 
@@ -144,12 +146,13 @@ angular.module('tripplannerApp')
 
 
         function isValidBetweenDates() {
+            return validator.checkDateRange($scope.dateFrom, $scope.dateTo);
             /*
             console.log($scope.dateFrom);
             console.log($scope.dateTo);
             return ($scope.dateFrom > $scope.dateFrom);
 */
-            return true;
+            //return true;
         };
 
 

@@ -35,7 +35,7 @@ angular.module('tripplannerApp')
 */
 
             minimunLength: function (n, prop, msg) {
-                console.log(n, prop, msg);
+                // console.log(n, prop, msg);
                 return (this.checkNull(prop, msg)) && (this.checkLength(n, prop, msg));
             },
 
@@ -74,7 +74,20 @@ angular.module('tripplannerApp')
                     Flash.create('danger', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
                     return false;
                 }
+            },
+
+
+            checkDateRange: function (date1, date2) {
+                if (date1 <= date2) {
+                    return true;
+                } else {
+                    var message = '<strong>Ups!</strong> Date range is invalid .';
+                    Flash.create('danger', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
+                    return false;
+                }
             }
+
+
 
 
 
