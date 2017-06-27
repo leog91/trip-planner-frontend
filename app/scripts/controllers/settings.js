@@ -42,6 +42,7 @@ angular.module('tripplannerApp')
         function saveCategory() {
             apiService.addCategory($scope.category)
                 .then(function (response) {
+                    $scope.category = "";
                     var message = '<strong>Well done!</strong>Category added  successfully.';
                     Flash.create('success', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
                     console.log("addCat ok");

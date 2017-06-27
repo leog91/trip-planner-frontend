@@ -39,9 +39,9 @@ angular.module('tripplannerApp')
 
 
         function isValid() {
-            return ($scope.name != null && $scope.name.length > 1) && 
-            ($scope.info != null && $scope.info.length > 1) &&
-            ($scope.dateFrom <= $scope.dateTo);
+            return ($scope.name != null && $scope.name.length > 1) &&
+                ($scope.info != null && $scope.info.length > 1) &&
+                ($scope.dateFrom <= $scope.dateTo);
         }
 
 
@@ -106,6 +106,8 @@ angular.module('tripplannerApp')
             apiService.saveTrip($scope.dateFrom, $scope.dateTo, $scope.name, $scope.info)
                 .then(function (response) {
                     console.log("add trip OK");
+                    $scope.name = "";
+                    $scope.info = "";
                     var message = '<strong>Well done!</strong>Trip added  successfully.';
                     Flash.create('success', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
                     apiService.getTrips().then(function (response) {
