@@ -9,7 +9,7 @@ angular.module('tripplannerApp')
 
         var auth = {};
 
-        var country = "ARS";
+        //var country = "ARS";
 
         var bundle = {};
 

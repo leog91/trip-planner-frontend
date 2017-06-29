@@ -58,7 +58,7 @@ angular.module('tripplannerApp')
 
             save: function (itemC, date) {
 
-                item.currency = userService.getCountry();
+                item.currency = userService.getProfile().currentCurrency;
                 item.name = itemC.name;
                 item.ammount = itemC.ammount;
                 item.date = date;
@@ -131,7 +131,7 @@ angular.module('tripplannerApp')
 
             update: function (itemC, date, idd) {
 
-                item.currency = userService.getCountry();
+                item.currency = userService.getProfile().currentCurrency;
                 item.name = itemC.name;
                 item.ammount = itemC.ammount;
                 item.date = date;
