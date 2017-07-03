@@ -100,7 +100,7 @@
         <td style="padding-top: 25px">{{ i.category }}</td>
         <td style="padding-top: 25px">{{ i.currency }}</td>
         <td style="padding-top: 25px">{{ i.ammount }}</td>
-        <td style="padding-top: 25px">{{ i.date.dayOfMonth}} - {{i.date.monthOfYear}} -{{ i.date.year }}</td>
+        <td style="padding-top: 25px">{{ i.date | date:'dd-MM-yyyy' }}</td>
         <td> <button type="button" ng-click="editItem($index)" class="btn btn-xs">  <i class="material-icons">edit</i></button>            </td>
         <td> <button type="button" ng-click="deleteItem($index)" class="btn btn-xs">  <i class="material-icons">delete</i></button>            </td>
 

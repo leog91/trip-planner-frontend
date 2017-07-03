@@ -67,7 +67,10 @@ angular.module('tripplannerApp')
             },
 
             checkPrice: function (price, msg) {
-                if ((price != null)) {
+
+                console.log("cPrice");
+                if ((price != null) && !(price === "")) {
+                    console.log("checkPricefail");
                     return true;
                 } else {
                     var message = '<strong>Ups!</strong>' + msg + ' must have a value .';

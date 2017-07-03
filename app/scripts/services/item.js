@@ -29,14 +29,19 @@ angular.module('tripplannerApp')
                     .then(function (response) {
                         console.log("get itemid ok")
                         item = response.data;
-                        item.date = new Date(item.date.year, item.date.monthOfYear - 1, item.date.dayOfMonth);
-                        //$scope.category = $scope.item.category;
+
+                        var plusOne = new Date(item.date);
+                        plusOne.setDate(plusOne.getDate() + 1);
+                        item.date = plusOne;
+
                     },
                     function (error) {
                         console.log("get item fail");
                     });
 
             },
+
+
 
             getIsEdit: function () {
                 return isEdit;
@@ -101,6 +106,8 @@ angular.module('tripplannerApp')
 
             },
 */
+
+
             get: function () {
                 return item;
             },
