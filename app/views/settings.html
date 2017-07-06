@@ -1,15 +1,10 @@
 <div class="jumbotron">
-
     <br>
     <h1>
         {{name}}</h1>
-
     <br>
 
-
     <img src="{{image}}" class="img-responsive center-block" alt="Profile pic">
-
-
 
     <br><br>
     <span>Country:</span>
@@ -19,84 +14,38 @@
     <option ng-repeat="country in countries" value="{{country.code}}">{{country.name}}</option>
   </select>
 
-    <br>
-    <br>
+    <br><br>
     <h2>Current Currency: {{country}}</h2>
 
-    <br><br>
+    <br>
 
-    <!--
-    <h2>Group Size: {{groupSize}}</h2>
--->
-    <br><br>
 
     <div class="">
         <button type="submit" ng-click="saveSettings()" class="btn-lg btn-info btn-block">Save Settings</button>
     </div>
 
     <br><br><br>
-    <!--
-    <form novalidate class="form-horizontal">
-        <abm-form-group>
-            <label abm-label type="floating">Group Size</label>
-            <input ng-model="groupSize" type="number" abm-form-control>
-        </abm-form-group>
-    </form>
--->
-
-
-
-    <!-- ----- {{category}} -----  -->
 
     <h2> Personal Categories </h2>
+
+    <input ng-model="category" type="text" ng-minlength="2" ng-required="true" class="form-control" placeholder="Name">
+
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+            <div class="">
+                <button type="submit" ng-click="addCategory()" class="btn btn-success  btn-raised ">Add Category</button>
+            </div>
+        </div>
+    </div>
 
     <table class="table table-striped">
 
         <tr ng-repeat="c in categories">
             <td style="padding-top: 25px">{{ c }}</td>
-
             <td> <button type="button" ng-click="deleteCategory($index)" class="btn btn-xs">  <i class="material-icons">delete</i></button>                </td>
         </tr>
     </table>
-
-
-    <input ng-model="category" type="text" ng-minlength="2" ng-required="true" class="form-control" placeholder="Name">
-
-    <div class="row">
-
-
-        <!--
-            
-            <form novalidate class="form-horizontal">
-            <div class="col-md-4">
-
-                <abm-form-group>
-                    <label abm-label type="floating">Category name</label>
-                    <input ng-model="category" ng-minlength="2" ng-required="true" abm-form-control>
-                </abm-form-group>
-            </div>
-        </form>  
-        
-        -->
-        <div class="col-md-4">
-
-
-        </div>
-
-
-        <div class="col-md-4">
-
-
-
-
-            <div class="">
-                <button type="submit" ng-click="addCategory()" class="btn btn-success  btn-raised ">Add Category</button>
-            </div>
-
-        </div>
-    </div>
-
-
-
 
 </div>

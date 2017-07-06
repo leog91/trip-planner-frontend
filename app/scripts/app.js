@@ -81,11 +81,6 @@ angular
         controller: 'AddItemCtrl',
         controllerAs: 'addItem'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
       .when('/converter', {
         templateUrl: 'views/converter.html',
         controller: 'ConvertCtrl',
