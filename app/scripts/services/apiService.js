@@ -189,6 +189,23 @@ angular.module('tripplannerApp')
                 });
             },
 
+
+            setRatio: function (dateFrom, dateTo, codeFrom, codeTo, ratio) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "currency/adds/" + this.dateUrl(dateFrom) + this.dateUrl(dateTo) + ratio + "/" + codeFrom + "/" + codeTo
+                });
+            },
+
+
+            getRatio: function (date, codeFrom, codeTo) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "currency/coeff/" + codeFrom + "/" + codeTo + "/" + this.dateUrl(date)
+                });
+            },
+
+
         };
     });
 

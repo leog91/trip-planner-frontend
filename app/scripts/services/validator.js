@@ -40,6 +40,21 @@ angular.module('tripplannerApp')
             },
 
 
+            checkSelectors: function (prop1, prop2) {
+                if (this.checkSelector(prop1) & this.checkSelector(prop2)) {
+                    return true
+                } else {
+                    var message = '<strong>Ups!</strong> must select a country .';
+                    Flash.create('danger', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
+                    return false;
+                }
+
+            },
+
+
+            checkSelector: function (prop) {
+                return prop != null && prop != undefined && prop != "";
+            },
 
 
             checkNull: function (prop, msg) {
