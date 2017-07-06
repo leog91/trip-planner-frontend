@@ -7,8 +7,6 @@ angular.module('tripplannerApp')
 
         var auth = {};
 
-        //var country = userService.getProfile().currentCurrency;
-
         var bundle = {};
 
         var currentGroupSize = 0;

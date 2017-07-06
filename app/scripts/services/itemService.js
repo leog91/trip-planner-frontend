@@ -5,7 +5,7 @@
 'use strict';
 
 angular.module('tripplannerApp')
-    .service('item', function (validator, userService, Flash, apiService) {
+    .service('itemService', function (validator, userService, Flash, apiService) {
 
         var item = {
             name: "",
@@ -22,29 +22,9 @@ angular.module('tripplannerApp')
 
         return {
 
-            setId: function (id) {
-                id = id;
-                isEdit = true;
-                apiService.itemById(id)
-                    .then(function (response) {
-                        console.log("get itemid ok")
-                        item = response.data;
-
-                        var plusOne = new Date(item.date);
-                        plusOne.setDate(plusOne.getDate() + 1);
-                        item.date = plusOne;
-
-                    },
-                    function (error) {
-                        console.log("get item fail");
-                    });
-
-            },
-
             getIsEdit: function () {
                 return isEdit;
             },
-
 
             getId: function () {
                 return id;
@@ -88,6 +68,21 @@ angular.module('tripplannerApp')
                 isEdit = false;
             },
 
+            setId: function (id) {
+                id = id;
+                isEdit = true;
+                apiService.itemById(id)
+                    .then(function (response) {
+                        item = response.data;
+                        var plusOne = new Date(item.date);
+                        plusOne.setDate(plusOne.getDate() + 1);
+                        item.date = plusOne;
+                    },
+                    function (error) {
+                        console.log("get itemById fail");
+                    });
+            },
+
             withAmount: function (amount) {
                 item.ammount = amount;
             },
@@ -98,16 +93,14 @@ angular.module('tripplannerApp')
 
             isValid: function () {
                 return (this.isValidName()) &&
-                    //(this.isValidDate()) &&
                     (this.isValidPrice())
             },
-
 
             update: function (itemC) {
 
                 item = itemC;
                 item.currency = userService.getProfile().currentCurrency;
-                
+
                 if (this.isValid()) {
                     apiService.updateItem(item)
                         .then(function (response) {

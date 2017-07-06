@@ -23,31 +23,17 @@ angular.module('tripplannerApp')
         $scope.dateFrom = today;
         $scope.dateTo = today;
 
-
-
         $scope.saveTrip = function () {
             if (isValid()) {
                 save();
             }
-            else {
-                //var message = '<strong>Ups!</strong> Name/info must be atleast 2 char long .';
-              //  Flash.create('danger', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
-            }
         }
-
-
-
 
         function isValid() {
             return validator.minimunLength(1, $scope.name, " Name") &&
                 validator.minimunLength(1, $scope.info, " Info") &&
-                //($scope.name != null && $scope.name.length > 1) &&
-                //  ($scope.info != null && $scope.info.length > 1) &&
                 validator.checkDateRange($scope.dateFrom, $scope.dateTo);
-            //($scope.dateFrom <= $scope.dateTo);
         }
-
-
 
         $scope.showAll = function () {
             apiService.getTrips().then(function (response) {
@@ -61,7 +47,6 @@ angular.module('tripplannerApp')
 
 
         $scope.deleteTrip = function (index) {
-
             var id = $scope.trips[index].id;
 
             apiService.deleteTrip(id).then(function (response) {
@@ -76,14 +61,13 @@ angular.module('tripplannerApp')
             });
         };
 
-
         $scope.viewTrip = function (index) {
-
             var id = $scope.trips[index].id;
 
             apiService.readTripItems(id).then(function (response) {
                 console.log("ok");
                 userService.setHistory(response.data);
+                userService.setHistoryDates($scope.trips[index].dateFrom, $scope.trips[index].dateTo);
 
                 var message = '<strong>Well done!</strong> Viewing Trip.';
                 Flash.create('success', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
@@ -96,19 +80,9 @@ angular.module('tripplannerApp')
             });
         };
 
-
-
-
-
-
-
         function save() {
-
-
-
             apiService.saveTrip($scope.dateFrom, $scope.dateTo, $scope.name, $scope.info)
                 .then(function (response) {
-                    console.log("add trip OK");
                     $scope.name = "";
                     $scope.info = "";
                     var message = '<strong>Well done!</strong>Trip added  successfully.';
@@ -123,23 +97,7 @@ angular.module('tripplannerApp')
                 },
                 function (error) {
                     console.log("add Trip Fail");
-                    var message = '<strong>Ups!</strong> Try again.';
-                    Flash.create('danger', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
                 });
-
         }
-
-
-        var myDate = new Date();
-        //this.isOpen = false;
-
-
-
-        $scope.day = myDate.getDate();
-        $scope.month = myDate.getMonth();
-        $scope.year = myDate.getFullYear();
-
-
-
 
     });

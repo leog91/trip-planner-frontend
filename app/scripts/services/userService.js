@@ -9,8 +9,6 @@ angular.module('tripplannerApp')
 
         var auth = {};
 
-        //var country = "ARS";
-
         var bundle = {};
 
         var email = "";
@@ -19,14 +17,16 @@ angular.module('tripplannerApp')
 
         var imageUrl = "";
 
-        //m
         var profile = {};
 
         var isLogged = false;
 
         var history = {};
 
-        //var hasHistory = false;
+        var dateFrom = null;
+        var dateTo = null;
+
+        var hasTrip = false;
 
 
         return {
@@ -39,12 +39,20 @@ angular.module('tripplannerApp')
                 return profile;
             },
 
-            clearHistory: function(){
+            clearHistory: function () {
                 history = {};
+                hasTrip = false;
+                dateFrom = null;
+                dateTo = null;
             },
 
             setHistory: function (items) {
                 history = items;
+                hasTrip = true;
+            },
+
+            hasTrip: function () {
+                return hasTrip;
             },
 
             getHistory: function () {
@@ -52,18 +60,24 @@ angular.module('tripplannerApp')
             },
 
 
+            setHistoryDates: function (dateFFrom, dateTTo) {
+                var plusOne = new Date(dateFFrom);
+                plusOne.setDate(plusOne.getDate() + 1);
+                dateFrom = plusOne;
+
+                plusOne = new Date(dateTTo);
+                plusOne.setDate(plusOne.getDate() + 1);
+                dateTo = plusOne;
+            },
+
+
             setUser: function (user) {
-                //var userNameWithoutMail = userService.getEmail().slice(0, userService.getEmail().indexOf("@"));
-                //email = user.email;
                 email = user.email.slice(0, user.email.indexOf("@"));
                 name = user.name;
                 imageUrl = user.imageUrl;
                 isLogged = true;
             },
 
-
-
-            //removeU
 
             getEmail: function () {
                 return email;
@@ -77,6 +91,14 @@ angular.module('tripplannerApp')
                 return imageUrl;
             },
 
+
+            getDateFrom: function () {
+                return dateFrom;
+            },
+
+            getDateTo: function () {
+                return dateTo;
+            },
             setCountry: function (newCountry) {
                 country = newCountry;
             },

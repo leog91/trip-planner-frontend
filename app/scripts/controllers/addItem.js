@@ -8,30 +8,30 @@
  * Controller of the tripplannerApp
  */
 angular.module('tripplannerApp')
-    .controller('AddItemCtrl', function ($scope, userService, Flash, apiService, $timeout, item) {
+    .controller('AddItemCtrl', function ($scope, userService, Flash, apiService, $timeout, itemService) {
 
 
-        $scope.isEdit = item.getIsEdit();
-        $scope.isAdd = !(item.getIsEdit());
+        $scope.isEdit = itemService.getIsEdit();
+        $scope.isAdd = !(itemService.getIsEdit());
 
         $scope.item = {};
 
 
         apiService.getProfile().then(function (response) {
-            $scope.item = item.get();
+            $scope.item = itemService.get();
         }, function (error) {
             console.log("conection error");
         });
 
-        item.clear();
-        item.clearEdit();
+        itemService.clear();
+        itemService.clearEdit();
 
         $scope.saveItem = function () {
-            item.save($scope.item);
+            itemService.save($scope.item);
         }
 
         $scope.updateItem = function () {
-            item.update($scope.item);
+            itemService.update($scope.item);
         }
 
         $scope.preset = [

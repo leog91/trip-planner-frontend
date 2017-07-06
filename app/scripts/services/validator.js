@@ -10,45 +10,20 @@ angular.module('tripplannerApp')
 
         return {
 
-            /*
-        minimunLength: function (n, prop, msg) {
-             console.log(prop.length > n);
-             console.log(prop != null);
-             console.log(
-                 (
-                     (prop != null)
-                     &&
-                     (prop.length > n)
-                 )
-             );
- 
-            if ((prop != null) && (prop.length > n)) {
-                console.log(1);
-                return true;
-            } else {
-                console.log(2);
-                var message = '<strong>Ups!</strong>' + msg + ' must be atleast 2 char long .';
-                Flash.create('danger', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
-                return false;
-            }
-        },
-*/
 
             minimunLength: function (n, prop, msg) {
-                // console.log(n, prop, msg);
                 return (this.checkNull(prop, msg)) && (this.checkLength(n, prop, msg));
             },
 
 
             checkSelectors: function (prop1, prop2) {
-                if (this.checkSelector(prop1) & this.checkSelector(prop2)) {
+                if (this.checkSelector(prop1) && this.checkSelector(prop2)) {
                     return true
                 } else {
                     var message = '<strong>Ups!</strong> must select a country .';
                     Flash.create('danger', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
                     return false;
                 }
-
             },
 
 
@@ -59,7 +34,6 @@ angular.module('tripplannerApp')
 
             checkNull: function (prop, msg) {
                 if (prop != null) {
-                    console.log("checkNullTrue");
                     return true;
                 } else {
                     var message = '<strong>Ups!</strong>' + msg + ' must be atleast 2 char long .';
@@ -70,11 +44,8 @@ angular.module('tripplannerApp')
 
             checkLength: function (n, prop, msg) {
                 if (prop.length > n) {
-                    console.log("check leength  True");
-                    console.log(2);
                     return true;
                 } else {
-                    console.log(3);
                     var message = '<strong>Ups!</strong>' + msg + ' must be atleast 2 char long .';
                     Flash.create('danger', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
                     return false;
@@ -82,10 +53,7 @@ angular.module('tripplannerApp')
             },
 
             checkPrice: function (price, msg) {
-
-                console.log("cPrice");
                 if ((price != null) && !(price === "")) {
-                    console.log("checkPricefail");
                     return true;
                 } else {
                     var message = '<strong>Ups!</strong>' + msg + ' must have a value .';
@@ -93,7 +61,6 @@ angular.module('tripplannerApp')
                     return false;
                 }
             },
-
 
             checkDateRange: function (date1, date2) {
                 if (date1 <= date2) {
@@ -104,12 +71,6 @@ angular.module('tripplannerApp')
                     return false;
                 }
             }
-
-
-
-
-
-
 
         };
     });
