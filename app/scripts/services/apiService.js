@@ -22,17 +22,17 @@ angular.module('tripplannerApp')
 
 
 
-            saveItem: function (item, date) {
+            saveItem: function (item) {
                 return $http({
                     method: 'get',
-                    url: this.url() + "item/add/" + userService.getEmail() + "/" + this.dateUrl(date) + this.itemUrl(item) + "/" + currentGroupSize
+                    url: this.url() + "item/add/" + userService.getEmail() + "/" + this.dateUrl(item.date) + this.itemUrl(item) + "/" + currentGroupSize
                 });
             },
 
-            updateItem: function (item, date, id) {
+            updateItem: function (item) {
                 return $http({
                     method: 'get',
-                    url: this.url() + "item/update/" + id + "/" + userService.getEmail() + "/" + this.dateUrl(date) + this.itemUrl(item) + "/" + currentGroupSize
+                    url: this.url() + "item/update/" + item.id + "/" + userService.getEmail() + "/" + this.dateUrl(item.date) + this.itemUrl(item) + "/" + currentGroupSize
                 });
             },
 

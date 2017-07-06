@@ -1,9 +1,7 @@
 <div class="text-center">
     <div flex-gt-xs>
         <md-datepicker ng-model="date" md-placeholder="date" md-open-on-focus></md-datepicker>
-
     </div>
-
 </div>
 
 
@@ -12,12 +10,9 @@
 </div>
 
 
-
-
 </div>
 <br><br><br>
 <div class="jumbotron">
-
     <h1>{{ratio}}</h1>
 </div>
 
@@ -25,34 +20,24 @@
 
 
 <div class="row">
-
     <div class="col-md-6">
         <span>CountryFrom:</span>
-
         <select class="form-control" ng-model="countryFrom">
     <option value="">-- Select a Country --</option>
     <option ng-repeat="country in countries" value="{{country.code}}">{{country.name}}</option>
   </select>
-
     </div>
 
     <div class="col-md-6">
-
-
         <span>CountryTo:</span>
-
         <select class="form-control" ng-model="countryTo">
     <option value="">-- Select a Country --</option>
     <option ng-repeat="country in countries" value="{{country.code}}">{{country.name}}</option>
   </select>
     </div>
-
 </div>
 
 <br>
-
-
-
 
 <div>
     <div class="text-center">

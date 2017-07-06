@@ -1,11 +1,3 @@
-<!--<br>
-<br><br> {{iddd}} {{item}}
-
-<br><br> {{asd}}
-<br><br>
-isadd{{isAdd}}
-<br>
-isEdiit{{isEdit}}-->
 
 
 <div class="text-center" ng-if="isAdd">
@@ -18,7 +10,7 @@ isEdiit{{isEdit}}-->
 
 
 
-<select class="form-control" ng-model="category">
+<select class="form-control" ng-model="item.category">
     
     <option ng-repeat="category in categories" >{{category}}</option>
   </select>
@@ -49,7 +41,7 @@ isEdiit{{isEdit}}-->
 
     <div layout-gt-xs="row">
         <div flex-gt-xs class="text-center">
-            <md-datepicker ng-model="myDate" md-placeholder="Enter date" md-open-on-focus></md-datepicker>
+            <md-datepicker ng-model="item.date" md-placeholder="Enter date" md-open-on-focus></md-datepicker>
         </div>
     </div>
 </form>
@@ -70,10 +62,5 @@ isEdiit{{isEdit}}-->
 </div>
 
 
-<!--
-<div class="">
-    <button type="submit" ng-click="saveItem()" class="btn btn-success  btn-raised btn-block">Add item</button>
-</div>
--->
 
 <br>

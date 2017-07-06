@@ -8,25 +8,20 @@
  *
  * Main module of the application.
  */
-//angular
-//	.module('ngMaterial', ["ng","ngAnimate","ngAria"])
+
 
 angular
   .module('tripplannerApp', [
     'ng',
     'ngAnimate',
-
     'ngCookies',
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    //'ngTouch',
-    //'ngAria',
     'ngMaterial',
     'ngFlash',
     'angularBootstrapMaterial',
     'socialLogin'
-    //, 'auth0.lock', 'ui.router', 'angular-jwt'
   ])
   //angular 1.6 route fix
   .config(['$locationProvider', function ($locationProvider) {
@@ -39,8 +34,8 @@ angular
 
 
 
-//datePicker Config
-.config(function ($mdDateLocaleProvider) {
+  //datePicker Config
+  .config(function ($mdDateLocaleProvider) {
     $mdDateLocaleProvider.formatDate = function (date) {
 
       var format = 'YYYY-MM-DD';
@@ -48,76 +43,29 @@ angular
       if ((navigator.language || navigator.userLanguage) === 'es_ES') {
         format = 'DD-MM-YYYY';
       }
-
       else {
         format = 'MM-DD-YYYY';
         format = 'DD-MM-YYYY';
       }
-      //if (document.documentElement.lang === 'en_US') {
-        
-      //}
       return moment(date).format(format);
     };
   })
 
 
 
-
   .run(function ($rootScope, $location, userService) {
-
-
-
     $rootScope.$on('$routeChangeStart', function (event) {
-
       if (!userService.isLoggedIn()) {
         console.log('DENY');
-        //  event.preventDefault();
-        //alert("Hello! You must loggIn!");
         $location.path('/login');
       }
       else {
         console.log('ALLOW');
-        // $location.path('/home');
       }
     });
 
 
   })
-
-
-
-
-
-  /*
-    .config(function ($stateProvider, lockProvider) {
-  
-      $stateProvider
-        .state('converter', {
-          url: '/converter',
-          controller: 'ConverterController',
-          templateUrl: 'views/converter.html',
-          controllerAs: 'vm'
-        })
-  
-        .state('login', {
-          url: '/login',
-          controller: 'LoginController',
-          templateUrl: 'views/login.html',
-          controllerAs: 'vm'
-        });
-  
-  
-  
-      lockProvider.init({
-        clientID: 'fZ1cQ2XBQb7TAbydxcpzP6PsTqPcOZ6K',
-        domain: 'leog91.auth0.com',
-        options: {
-          _idTokenVerification: false
-        }
-      });
-  
-  
-    })*/
 
 
 
@@ -152,11 +100,6 @@ angular
         templateUrl: 'views/settings.html',
         controller: 'SettingsCtrl',
         controllerAs: 'settings'
-      })
-      .when('/editItem/:id', {
-        templateUrl: 'views/editItem.html',
-        controller: 'EditItemCtrl',
-        controllerAs: 'editItem'
       })
       .when('/history', {
         templateUrl: 'views/history.html',

@@ -41,8 +41,6 @@ angular.module('tripplannerApp')
 
             },
 
-
-
             getIsEdit: function () {
                 return isEdit;
             },
@@ -54,59 +52,33 @@ angular.module('tripplannerApp')
 
             clear: function () {
                 id = null;
-                //  isEdit = false;
                 item.name = "";
                 item.ammount = "";
                 item.date = new Date();
                 item.category = "General";
             },
 
-            save: function (itemC, date) {
+            save: function (itemC) {
 
+                item = itemC;
                 item.currency = userService.getProfile().currentCurrency;
-                item.name = itemC.name;
-                item.ammount = itemC.ammount;
-                item.date = date;
-                item.category = itemC.category;
 
                 if (this.isValid()) {
-                    apiService.saveItem(item, item.date)
+                    apiService.saveItem(item)
                         .then(function (response) {
-                            console.log("addItem OK");
                             var message = '<strong>Well done!</strong>Item added  successfully.';
                             Flash.create('success', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
                         },
                         function (error) {
-                            console.log("addItem Fail");
                             var message = '<strong>Ups!</strong> Try again.';
                             Flash.create('danger', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);
                         });
                 }
             },
 
-            /*
-                        isEdit: function () {
-                            return id != null;
-                        },
-            */
             withName: function (name) {
                 item.name = name;
             },
-
-
-            /*
-            get: function () {
-                if (this.isEdit()) {
-                    return item;
-                }
-                else {
-                    // this.clear();
-                    return item;
-                }
-
-            },
-*/
-
 
             get: function () {
                 return item;
@@ -125,27 +97,19 @@ angular.module('tripplannerApp')
             },
 
             isValid: function () {
-
-                // return true;
-
                 return (this.isValidName()) &&
                     //(this.isValidDate()) &&
-
                     (this.isValidPrice())
-
             },
 
 
-            update: function (itemC, date, idd) {
+            update: function (itemC) {
 
+                item = itemC;
                 item.currency = userService.getProfile().currentCurrency;
-                item.name = itemC.name;
-                item.ammount = itemC.ammount;
-                item.date = date;
-                item.category = itemC.category;
-
+                
                 if (this.isValid()) {
-                    apiService.updateItem(item, item.date, idd)
+                    apiService.updateItem(item)
                         .then(function (response) {
                             var message = '<strong>Well done!</strong> Item  edited successfully.';
                             Flash.create('success', message, 4000, { class: 'custom-class', id: 'custom-id' }, true);

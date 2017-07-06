@@ -6,21 +6,8 @@
 
 
 <div class="row">
-
-
-
-
     <div>
-
-
-        <!--
-        <div class="">
-            <button type="submit" ng-click="showAll()" class="btn-lg btn-warning btn-block">Show</button>
-        </div>
--->
-
         <table class="table table-striped">
-
             <thead>
                 <th>Name </th>
                 <th>Info</th>
@@ -29,7 +16,6 @@
                 <th>View</th>
                 <th>Delete</th>
             </thead>
-
             <tr ng-repeat="t in trips">
                 <td style="padding-top: 25px">{{ t.name }}</td>
                 <td style="padding-top: 25px">{{ t.info }}</td>
@@ -39,67 +25,30 @@
                 <td> <button type="button" ng-click="deleteTrip($index)" class="btn btn-xs">  <i class="material-icons">delete</i></button></td>
             </tr>
         </table>
-
-        <!--  {{trips}}-->
-
     </div>
 
-
     <br><br>
     <br><br>
-
 
     <div>
-
-
         <form novalidate class="form-horizontal">
-
-
             <input ng-model="name" type="text" ng-minlength="2" ng-required="true" class="form-control" placeholder="Name">
             <br>
-
             <input ng-model="info" type="text" ng-minlength="2" ng-required="true" class="form-control" placeholder="Description">
-
-            <!--
-            <abm-form-group>
-                <label abm-label type="floating">Name</label>
-                <input ng-model="name" ng-minlength="2" ng-required="true" abm-form-control>
-            </abm-form-group>
-
-            <abm-form-group>
-                <label abm-label type="floating">Description</label>
-                <input ng-model="info" ng-minlength="2" ng-required="true" abm-form-control>
-            </abm-form-group>
--->
         </form>
 
         <div>
-
-
             <div class="text-center">
                 <div flex-gt-xs>
                     <md-datepicker ng-model="dateFrom" md-placeholder="From" md-open-on-focus></md-datepicker>
                     <md-datepicker ng-model="dateTo" md-placeholder="To" md-open-on-focus></md-datepicker>
                 </div>
-
             </div>
-
         </div>
-
-
 
         <div class="text-center">
             <button type="submit" ng-click="saveTrip()" class="btn-lg btn-warning btn-block">Define Trip</button>
         </div>
-
-
-
-
-
-
     </div>
-
-
-
 
 </div>
