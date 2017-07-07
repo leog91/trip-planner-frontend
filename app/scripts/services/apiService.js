@@ -14,9 +14,11 @@ angular.module('tripplannerApp')
         return {
 
 
-            url: function () {
-                return "http://localhost:8080/";
+              url: function () {
+                return "https://trip-planner-backend.herokuapp.com/";
+                //return "http://localhost:8080/";
             },
+
 
 
 
